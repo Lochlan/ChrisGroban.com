@@ -29,6 +29,7 @@ $(function(){
         var f	=	function(){
             if(pos==0) clearTimeout(stacktime);
             $this.next().find('a:nth-child('+pos+')').css('visibility','visible');
+            $this.next().find('span:nth-child('+pos+')').css('visibility','visible');
             --pos;
         };
         /* each thumb will appear with a delay */

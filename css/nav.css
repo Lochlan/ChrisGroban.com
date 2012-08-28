@@ -72,9 +72,9 @@ div.sc_menu {
     background-color:#333;
     color: #fff;
     text-align:center;
-    -moz-box-shadow:3px -3px 3px #000000;
+/*    -moz-box-shadow:3px -3px 3px #000000;
     box-shadow:3px -3px 3px #000000;
-    -webkit-box-shadow:3px -3px 3px #000000;
+    -webkit-box-shadow:3px -3px 3px #000000;    */
 }
 .sc_menu img {
     display: block;
