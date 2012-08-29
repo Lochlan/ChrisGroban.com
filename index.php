@@ -20,7 +20,7 @@
 <canvas id="back_canvas" width="100" height="100"></canvas>
         
 <div id="curtain" ></div>     
-<div id="loading" style="color:#fff;position:absolute;top:100px;left:100px;width:50%;height:100%;">Buffering video<span id="loadnum"></span></div>        
+<div id="loading" style="color:#999;position:absolute;top:10px;left:10px;width:50%;height:100%;font-size:11pt;">Buffering video<span id="loadnum"></span></div>        
 <div id="wrap">
 
     <video id="bg-video" class="video-js vjs-default-skin"
@@ -82,7 +82,7 @@
     <div id="curtain2" >
 
         <div id="pop-up-video">
-                <a id="close-pop" >Close [X]</a>
+                <a id="close-pop" >X close</a>
         <br/>
             <video id="video2" class="video-js vjs-default-skin"
                controls width="640" height="480" poster="./img/video-screens/frally_big.png"
