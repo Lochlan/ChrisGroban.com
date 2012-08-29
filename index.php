@@ -20,7 +20,7 @@
 <canvas id="back_canvas" width="100" height="100"></canvas>
         
 <div id="curtain" ></div>     
-        
+<div id="loading" style="color:#fff;position:absolute;top:100px;left:100px;width:50%;height:100%;">Buffering video<span id="loadnum"></span></div>        
 <div id="wrap">
 
     <video id="bg-video" class="video-js vjs-default-skin"
@@ -28,11 +28,10 @@
            data-setup='{ "controls": false, "autoplay": true, "preload": "auto", "loop": true }'>
       <source src="./video/home/projector_bg.mp4" type='video/mp4'>
     </video>
-
 </div>
         
 <canvas id="canvas" width="100" height="100"></canvas>
-        
+
 <div id="main">
     <div id="logo"></div>
 
@@ -58,11 +57,11 @@
         
         <li style="width:205px;">
             <a href="#"  style="z-index:90;left:48px;"><img src="./img/nav/bio.png" /></a>
-            <div class="sc_menu_wrapper2" style="width:205px;height:289px;">
-                <div class="sc_menu" style="width:205px;height:289px;">
-                    <a style="display:block;width:205px;height:289px;text-align:left;background:url('http://lochlanmcintosh.com/ChrisGroban.com/img/nav/bio_bg.png') no-repeat top left;">
+            <div class="sc_menu_wrapper2" style="width:205px;">
+                <div class="sc_menu" style="width:205px;/*height:289px;*/height:288px;">
+                    <a style="display:block;width:205px;height:288px;text-align:left;background:url('http://lochlanmcintosh.com/ChrisGroban.com/img/nav/bio_bg.png') no-repeat top left;">
                         
-                        <span style="width:120px;z-index:90;">Chris Groban lives in Los Angeles, CA where he writes and directs music videos, commercials, and documentaries.<br />
+                        <span style="position:absolute;top:15px;left:20px;width:140px;z-index:90;font-size:11pt;">Chris Groban lives in Los Angeles, CA where he writes and directs music videos, commercials, and documentaries.<br /><br />
                         His hobbies include eating lox on a bagel and telling you to be quiet in movies.</span>
                     
                     </a>
@@ -72,7 +71,7 @@
         
         <li class="last" style="width:173px;">
             <a href="#"  style="z-index:90;left:32px;"><img src="./img/nav/contact.png" /></a>
-            <div class="sc_menu_wrapper2" style="width:173px;height:114px;">
+            <div class="sc_menu_wrapper2" style="width:173px;">
                 <div class="sc_menu" style="width:173px;height:114px;">
                     <a style="width:173px;height:114px;text-align:left;">Agent: Michael Appel<br />michaelfappel@gmail.com</a>
                 </div>

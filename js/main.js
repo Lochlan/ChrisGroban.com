@@ -145,8 +145,6 @@ $(document).ready(function(){
                     }
 
 
-                    console.log('heyyyo');
-
                     window.clearInterval(thing);    //stop animation
                     return;
                 }
@@ -197,8 +195,12 @@ $(document).ready(function(){
     });
     
     var startBGMovie = function(){
-        console.log('inside startBGMovie')
         var myPlayer = this;
+        var howMuchIsDownloaded = myPlayer.bufferedPercent();
+        var bufferedTimeRange = myPlayer.buffered();
+        
+        $("#loading").hide();
+        
         // Do something when the event is fired
         $("div#wrap").fadeIn(3000);
         $("div#logo").delay(4000).fadeIn(1000);
@@ -244,15 +246,41 @@ $(document).ready(function(){
     
     
     var echome = function(msg){
-        console.log(msg);
+        console.log(msg.originalEvent.type);
     }
 
-    console.log('hello');
+    
     myPlayer.addEvent("loadeddata", startBGMovie);
-    //myPlayer.addEvent("loadeddata", echome('loadeddata'));
-    //myPlayer.addEvent("loadedalldata", echome('loadedalldata'));
+    /*
+    myPlayer.addEvent("loadstart", echome);
+    myPlayer.addEvent("loadedmetadata", echome);
+    myPlayer.addEvent("loadeddata", echome);
+    myPlayer.addEvent("play", echome);
+    myPlayer.addEvent("durationchange", echome);
+    myPlayer.addEvent("progress", echome);
     
+    
+    myPlayer.addEvent("loadedalldata", echome);
+    */
     //myPlayer.addEvent("loadstart", console.log("loadstart"));
+    //myPlayer.bufferedPercent()
     
     
+    var temp;
+    function lpmtest()
+    {
+        var myPlayer = _V_("bg-video");
+        var bufperc = myPlayer.bufferedPercent();
+        $('#loadnum').append('.');
+        
+        if( bufperc === 1){
+            clearInterval(temp);
+        }
+    }
+    
+    
+  temp = setInterval(function(){lpmtest()},500);
 });
+
+
+
