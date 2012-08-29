@@ -197,6 +197,7 @@ $(document).ready(function(){
     });
     
     var startBGMovie = function(){
+        console.log('inside startBGMovie')
         var myPlayer = this;
         // Do something when the event is fired
         $("div#wrap").fadeIn(3000);
@@ -239,8 +240,19 @@ $(document).ready(function(){
     
     
     document.addEventListener("particlesFinished", playVideo, false);
+    
+    
+    
+    var echome = function(msg){
+        console.log(msg);
+    }
 
-    myPlayer.addEvent("play", startBGMovie);
+    console.log('hello');
+    myPlayer.addEvent("loadeddata", startBGMovie);
+    //myPlayer.addEvent("loadeddata", echome('loadeddata'));
+    //myPlayer.addEvent("loadedalldata", echome('loadedalldata'));
+    
+    //myPlayer.addEvent("loadstart", console.log("loadstart"));
     
     
 });
