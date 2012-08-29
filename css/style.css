@@ -1,3 +1,8 @@
+@font-face
+{
+font-family: Colaborate-Regular;
+src: url('../font/ColabReg.otf');
+}
 *{margin:0;padding:0;}
 body{padding:0;margin:0;width:100%;height:100%;min-height:100%;background-color:#000;overflow:hidden;}
 div#wrap{width:100%;height:100%;display:none;
@@ -12,5 +17,3 @@ div#curtain2{position:absolute;top:0px;left:0px;width:100%;height:100%;display:n
 #menu{display:none;}
 #pop-up-video{display:none;z-index:100;}
 #close-pop{cursor:pointer;text-align:right;color:white;font-weight:bold;}
-/* #video2{margin:5%;} */
-#video2{position:absolute;top:100px;left:100px;}
