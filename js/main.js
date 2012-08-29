@@ -6,18 +6,52 @@ $(document).ready(function(){
     var winW = $(window).width();
     var winH = $(window).height();
     var newW = winW;
-    var newH = winH * 2;
-    var aspectRat = 1920/1080;
+    var newH = winH;
+    var aspectRat = 192/108;
     var myAspectRatio = winW / winH;
 
     if(myAspectRatio < aspectRat){
         newW = Math.floor(winH * aspectRat);
+        console.log('y too big');
     } else{
-        newH = Math.floor(winW / aspectRat); 
+        newH = Math.floor(winW / aspectRat);
+        console.log('x too big');
     }
     
     var myPlayer = _V_("bg-video", { "controls": false, "autoplay": true, "preload": "auto", "loop": true });
-    myPlayer.size(winW,winH);
+    //myPlayer.size(winW,winH);
+    myPlayer.size(newW,newH);
+
+
+
+          // window resize
+    $(window).bind("resize", function(){
+        /*
+        var winW = $(window).width();
+        var winH = $(window).height();
+        myPlayer.width(winW);
+        myPlayer.height(winH);
+        */
+
+
+            var winW = $(window).width();
+        var winH = $(window).height();
+        var newW = winW;
+        var newH = winH;
+        var aspectRat = 192/108;
+        var myAspectRatio = winW / winH;
+
+        if(myAspectRatio < aspectRat){
+            newW = Math.floor(winH * aspectRat);
+            console.log('y too big');
+        } else{
+            newH = Math.floor(winW / aspectRat);
+            console.log('x too big');
+        }
+
+        myPlayer.size(newW,newH);
+    });  
+
 
 
     function rgbToHex(R,G,B) {return toHex(R)+toHex(G)+toHex(B)}
@@ -58,25 +92,60 @@ $(document).ready(function(){
         $("#menu").delay(4000).fadeIn(1000);
     };
     
-      // window resize
-    $(window).bind("resize", function(){
-        var winW = $(window).width();
-        var winH = $(window).height();
-        myPlayer.width(winW);
-        myPlayer.height(winH);
-    });  
+
+
+    //handle opening  pop up video
+    $('#pop-akon').click(function() {
+        var myPlayer = _V_("bg-video");
+        myPlayer.pause();
+        playVideo("http://chrisgroban.com/client_review/mp4forsite/1076_AEPK_101202_1000-ForSite.mp4");
+    });
 
     //handle opening  pop up video
     $('#pop-frally').click(function() {
         var myPlayer = _V_("bg-video");
         myPlayer.pause();
-        playVideo();
+        playVideo("http://chrisgroban.com/client_review/mp4forsite/Frally_CASUALTY_101212_1000_FIN-ForSite.mp4");
     });
 
+    
+    $('#pop-ludofood').click(function() {
+        var myPlayer = _V_("bg-video");
+        myPlayer.pause();
+        playVideo("http://chrisgroban.com/client_review/mp4forsite/Ludo_FOOD_110125_1400-QuickTime%20H.264.mp4");
+    });
+    
+    $('#pop-ludowhat').click(function() {
+        var myPlayer = _V_("bg-video");
+        myPlayer.pause();
+        playVideo("http://chrisgroban.com/client_review/mp4forsite/Ludo_WhatIsLudobites_110127_1500-QuickTime%20H.264.mp4");
+    });
+    
+    $('#pop-reel').click(function() {
+        var myPlayer = _V_("bg-video");
+        myPlayer.pause();
+        playVideo("http://chrisgroban.com/client_review/mp4forsite/REEL_Director_120119_1600_v2_720x405-ForSite.mp4");
+    });
+
+    
+    $('#pop-trapped').click(function() {
+        var myPlayer = _V_("bg-video");
+        myPlayer.pause();
+        playVideo("http://chrisgroban.com/client_review/mp4forsite/TRAPPED_110505_1200-ForSite.mp4");
+    });
+    
+    $('#pop-walkaway').click(function() {
+        var myPlayer = _V_("bg-video");
+        myPlayer.pause();
+        playVideo("http://chrisgroban.com/client_review/mp4forsite/WalkAway_111203_1200-ForSite.mp4");
+    });
+    
+
     //start playing the pop up video
-    function playVideo(){
+    function playVideo(mp4path){
         if(!paused){
-            var myPlayer2 = _V_("video2", {"autoplay":false, "poster": "./img/video-screens/frally_big.png"});
+            //var myPlayer2 = _V_("video2", {"autoplay":true, "poster": posterpath});
+            var myPlayer2 = _V_("video2", {"autoplay":true});
             var winW = $(window).width();
             var winH = $(window).height();
             myPlayer2.width(6 * 150);
@@ -85,14 +154,17 @@ $(document).ready(function(){
             $('#curtain2').show();
 
             myPlayer2.src([
-                { type: "video/mp4", src: "./video/frally.m4v" }
+                { type: "video/mp4", src: mp4path }
             ]);
+            
 
             $('#pop-up-video').fadeIn(500);
             
             paused = true;
             
             _V_("bg-video").pause();
+            
+            myPlayer2.play();
 
         }
     }

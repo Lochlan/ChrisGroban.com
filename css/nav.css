@@ -1,6 +1,7 @@
 body{
     overflow:hidden;
 }
+a{border:0;}
 /* Navigation Style */
 ul.menu{
     list-style:none;
@@ -67,7 +68,7 @@ div.sc_menu {
 }
 .sc_menu a {
     display: block;
-    background-color:#333;
+    /*background-color:#333;*/
     color: #fff;
     text-align:center;
 /*    -moz-box-shadow:3px -3px 3px #000000;

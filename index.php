@@ -26,6 +26,8 @@
     <video id="bg-video" class="video-js vjs-default-skin"
            width="640" height="480"
            data-setup='{ "controls": false, "autoplay": true, "preload": "auto", "loop": true }'>
+      
+      <source src="./video/home/projector_bg.webm" type='video/webm'>
       <source src="./video/home/projector_bg.mp4" type='video/mp4'>
     </video>
 </div>
@@ -40,17 +42,17 @@
             <a href="#" style="z-index:90;"><img src="./img/nav/videos.png" /></a>
             <div class="sc_menu_wrapper">
                 <div class="sc_menu">
-                    <a class=""><img src="./img/video_thumbs/Akon.png" alt=""/></a>
-                    <a class=""><img src="./img/video_thumbs/AngelTaylor.png" alt=""/></a>
+                    <a id="pop-akon"><img src="./img/video_thumbs/Akon.png" alt="" style="background:url('./img/curtain-bg.png') repeat top left;" /></a>
+                    <!-- a class=""><img src="./img/video_thumbs/AngelTaylor.png" alt=""/></a>
                     <a class=""><img src="./img/video_thumbs/AnotherDay.png" alt=""/></a>
                     <a class=""><img src="./img/video_thumbs/Brown.png" alt=""/></a>
-                    <a class=""><img src="./img/video_thumbs/Coffee.png" alt=""/></a>
+                    <a class=""><img src="./img/video_thumbs/Coffee.png" alt=""/></a -->
                     <a id="pop-frally" class=""><img src="./img/video_thumbs/Frally.png" alt=""/></a>
-                    <a class=""><img src="./img/video_thumbs/LudoFOOD.png" alt=""/></a>
-                    <a class=""><img src="./img/video_thumbs/LudoWHATIS.png" alt=""/></a>
-                    <a class=""><img src="./img/video_thumbs/Reel.png" alt=""/></a>
-                    <a class=""><img src="./img/video_thumbs/Trapped.png" alt=""/></a>
-                    <a class=""><img src="./img/video_thumbs/WalkAway.png" alt=""/></a>
+                    <a id="pop-ludofood"><img src="./img/video_thumbs/LudoFOOD.png" alt=""/></a>
+                    <a id="pop-ludowhat" class=""><img src="./img/video_thumbs/LudoWHATIS.png" alt=""/></a>
+                    <a id="pop-reel" class=""><img src="./img/video_thumbs/Reel.png" alt=""/></a>
+                    <a id="pop-trapped"><img src="./img/video_thumbs/Trapped.png" alt=""/></a>
+                    <a id="pop-walkaway"><img src="./img/video_thumbs/WalkAway.png" alt=""/></a>
                 </div>
             </div>
         </li>
@@ -59,7 +61,7 @@
             <a href="#"  style="z-index:90;left:48px;"><img src="./img/nav/bio.png" /></a>
             <div class="sc_menu_wrapper2" style="width:205px;">
                 <div class="sc_menu" style="width:205px;/*height:289px;*/height:288px;">
-                    <a style="display:block;width:205px;height:288px;text-align:left;background:url('http://lochlanmcintosh.com/ChrisGroban.com/img/nav/bio_bg.png') no-repeat top left;">
+                    <a style="display:block;width:205px;height:288px;text-align:left;background:url('./img/nav/bio_bg.png') no-repeat top left;">
                         
                         <span style="position:absolute;top:15px;left:20px;width:140px;z-index:90;font-size:11pt;">Chris Groban lives in Los Angeles, CA where he writes and directs music videos, commercials, and documentaries.<br /><br />
                         His hobbies include eating lox on a bagel and telling you to be quiet in movies.</span>
@@ -71,9 +73,10 @@
         
         <li class="last" style="width:173px;">
             <a href="#"  style="z-index:90;left:32px;"><img src="./img/nav/contact.png" /></a>
-            <div class="sc_menu_wrapper2" style="width:173px;">
-                <div class="sc_menu" style="width:173px;height:114px;">
-                    <a style="width:173px;height:114px;text-align:left;">Agent: Michael Appel<br />michaelfappel@gmail.com</a>
+            <div class="sc_menu_wrapper2" style="width:210px;">
+                <div class="sc_menu" style="width:210px;height:114px;">
+                    <a style="width:210px;height:114px;text-align:left;background:url('./img/curtain-bg.png') repeat top left;">
+                        <span style="position:absolute;top:15px;left:20px;width:170px;z-index:90;font-size:11pt;">Agent: Michael Appel<br />michaelfappel@gmail.com</span></a>
                 </div>
             </div>
         </li>
@@ -85,9 +88,11 @@
                 <a id="close-pop" >X close</a>
         <br/>
             <video id="video2" class="video-js vjs-default-skin"
-               controls width="640" height="480" poster="./img/video-screens/frally_big.png"
+                controls width="640" height="480"
                 data-setup='{ "controls": true, "autoplay": false, "preload": "auto", "loop": false }'>
-          <source src="./video/frally.m4v" type='video/mp4'>
+
+                <source src="./video/frally.webm" type='video/webm'>
+                <source src="http://chrisgroban.com/client_review/mp4forsite/REEL_Director_120119_1600_v2_720x405-ForSite.mp4" type='video/mp4'>
         </video>
         </div>
 
