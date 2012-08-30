@@ -18,6 +18,8 @@ $(document).ready(function(){
     
     var myPlayer = _V_("bg-video", { "controls": false, "autoplay": true, "preload": "auto", "loop": true });
     myPlayer.size(winW,winH);
+    
+    
 
 
     function rgbToHex(R,G,B) {return toHex(R)+toHex(G)+toHex(B)}

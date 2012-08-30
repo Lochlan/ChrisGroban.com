@@ -26,19 +26,21 @@
     <video id="bg-video" class="video-js vjs-default-skin"
            width="640" height="480"
            data-setup='{ "controls": false, "autoplay": true, "preload": "auto", "loop": true }'>
-      
-      <source src="./video/home/projector_bg.webm" type='video/webm'>
       <source src="./video/home/projector_bg.mp4" type='video/mp4'>
+      <source src="./video/home/projector_bg.webm" type='video/webm'>
     </video>
+    
+    <div id="wrapcurtain" ></div>
 </div>
         
 <canvas id="canvas" width="100" height="100"></canvas>
 
 <div id="main">
     <div id="logo"></div>
-
+    <img src="./img/white-bar.png" id="whitebar" style="display:none;position:absolute;bottom:38px;left:0px;" />
     <ul class="menu" id="menu">
-        <li id="nav-link-videos">
+        
+        <li id="nav-link-videos" class="navmen">
             <a href="#" style="z-index:90;"><img src="./img/nav/videos.png" /></a>
             <div class="sc_menu_wrapper">
                 <div class="sc_menu">
@@ -57,7 +59,7 @@
             </div>
         </li>
         
-        <li style="width:205px;">
+        <li style="width:205px;" class="navmen">
             <a href="#"  style="z-index:90;left:48px;"><img src="./img/nav/bio.png" /></a>
             <div class="sc_menu_wrapper2" style="width:205px;">
                 <div class="sc_menu" style="width:205px;/*height:289px;*/height:288px;">
@@ -71,8 +73,8 @@
             </div>
         </li>
         
-        <li class="last" style="width:173px;">
-            <a href="#"  style="z-index:90;left:32px;"><img src="./img/nav/contact.png" /></a>
+        <li class="last navmen" style="width:210px;">
+            <a href="#"  style="z-index:90;left:50px;"><img src="./img/nav/contact.png" /></a>
             <div class="sc_menu_wrapper2" style="width:210px;">
                 <div class="sc_menu" style="width:210px;height:114px;">
                     <a style="width:210px;height:114px;text-align:left;background:url('./img/curtain-bg.png') repeat top left;">

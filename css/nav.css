@@ -12,14 +12,14 @@ ul.menu{
     line-height: 1.45em;
     position: fixed;
     bottom:0px;
-    left:0px;
+    left:34px;
     width:700px;
     height:100%;
 }
 ul.menu li{
     float:left;
     position:relative;
-    height:100%;
+    height:90%;
     width:130px;
 }
 ul.menu li > a{
@@ -27,9 +27,9 @@ ul.menu li > a{
     bottom:0px;
     left:0px;
     width:110px;
-    height:40px;
+    height:16px;
     text-align:center;
-    line-height:40px;
+    line-height:16px;
     color:#ddd;
     /* background-color:#291A2F; */
     letter-spacing:1px;

@@ -13,6 +13,7 @@ $(function(){
             var wrapperHeight 	= $wrapper.height();
             var menuHeight 	= $menu.outerHeight() + 2 * inactiveMargin;
             var top 	= (e.pageY - $wrapper.offset().top) * (menuHeight - wrapperHeight) / wrapperHeight - inactiveMargin;
+            //console.log(top);
             $wrapper.scrollTop(top+10);
         });
     }

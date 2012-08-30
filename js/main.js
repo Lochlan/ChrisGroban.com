@@ -9,20 +9,26 @@ $(document).ready(function(){
     var newH = winH;
     var aspectRat = 192/108;
     var myAspectRatio = winW / winH;
+    
+    var myPlayer2 = _V_("video2");
+    
+    var v2aspectRat = 4/3;
 
     if(myAspectRatio < aspectRat){
         newW = Math.floor(winH * aspectRat);
-        console.log('y too big');
+
     } else{
         newH = Math.floor(winW / aspectRat);
-        console.log('x too big');
+
     }
     
     var myPlayer = _V_("bg-video", { "controls": false, "autoplay": true, "preload": "auto", "loop": true });
     //myPlayer.size(winW,winH);
     myPlayer.size(newW,newH);
 
-
+    var tempH = winH-40+'px';
+    $(".navmen").css('height', tempH);
+    
 
           // window resize
     $(window).bind("resize", function(){
@@ -43,11 +49,21 @@ $(document).ready(function(){
 
         if(myAspectRatio < aspectRat){
             newW = Math.floor(winH * aspectRat);
-            console.log('y too big');
+            var tempW = parseInt( (8/10)*winW ); var tempH = parseInt( (9/15.9)*tempW );
+            myPlayer2.size(tempW, tempH);
+            var tempTop = parseInt( (winH-tempH)/2 ); var tempLeft = parseInt( (winW-tempW)/2 );
+            $('#pop-up-video').css('top',tempTop); $('#pop-up-video').css('left',tempLeft);
         } else{
             newH = Math.floor(winW / aspectRat);
-            console.log('x too big');
+            var tempH = parseInt( (8/10)*winH );var tempW = parseInt( (15.9/9)*tempH );
+            myPlayer2.size(tempW, tempH);
+            var tempTop = parseInt( (winH-tempH)/2 );var tempLeft = parseInt( (winW-tempW)/2 );
+            $('#pop-up-video').css('top',tempTop);$('#pop-up-video').css('left',tempLeft);
         }
+        
+        var tempH = winH-40+'px';
+        $(".navmen").css('height', tempH);
+    
 
         myPlayer.size(newW,newH);
     });  
@@ -87,9 +103,12 @@ $(document).ready(function(){
         $("#loading").hide();
         
         // Do something when the event is fired
-        $("div#wrap").delay(300).fadeIn(3000);
+        
+        $("#wrapcurtain").delay(1000).fadeOut(3000);
         $("div#logo").delay(4000).fadeIn(1000);
         $("#menu").delay(4000).fadeIn(1000);
+        $("#whitebar").delay(4000).fadeIn(1000);
+        
     };
     
 
@@ -156,6 +175,24 @@ $(document).ready(function(){
             myPlayer2.src([
                 { type: "video/mp4", src: mp4path }
             ]);
+            
+            
+            
+            
+            if(myAspectRatio < aspectRat){
+                var tempW = parseInt( (8/10)*winW ); var tempH = parseInt( (9/15.9)*tempW );
+                myPlayer2.size(tempW, tempH);
+                var tempTop = parseInt( (winH-tempH)/2 ); var tempLeft = parseInt( (winW-tempW)/2 );
+                $('#pop-up-video').css('top',tempTop); $('#pop-up-video').css('left',tempLeft);
+            } else{
+                var tempH = parseInt( (8/10)*winH );var tempW = parseInt( (15.9/9)*tempH );
+                myPlayer2.size(tempW, tempH);
+                var tempTop = parseInt( (winH-tempH)/2 );var tempLeft = parseInt( (winW-tempW)/2 );
+                $('#pop-up-video').css('top',tempTop);$('#pop-up-video').css('left',tempLeft);
+            }
+
+            
+            
             
 
             $('#pop-up-video').fadeIn(500);
