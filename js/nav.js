@@ -1,3 +1,15 @@
+var closemenu = true;
+
+setInterval(function(){
+    //console.log($('div.sc_menu_wrapper').css('display'));
+    if(closemenu){
+        //$('div.sc_menu_wrapper').css('display','none');
+    } else {
+        //$('div.sc_menu_wrapper').css('display','block');
+    }
+    
+},100);
+
 $(function(){
     /* function to make the thumbs menu scrollable */
     function buildThumbs($elem){
@@ -18,19 +30,32 @@ $(function(){
         });
     }
 
+
     var stacktime;
 
     //MENU  
     $('#menu li > a').bind('mouseover',function () {
         var $this = $(this);
+        //console.log('mouseover');
+        closemenu = false;
+        if( $this.is("#navlink1") ){
+            $('#mirror1').show();
+            $('.mytest').css('visibility','visible');
+        } else if( $this.is("#navlink2") ){
+            $('#mirror2').show();
+            $('.mytest2').css('visibility','visible');
+        } else if( $this.is("#navlink3") ){
+            $('#mirror3').show();
+            $('.mytest3').css('visibility','visible');
+        }
 
         buildThumbs($this);
 
         var pos	=	$this.next().find('a').size();
         var f	=	function(){
             if(pos==0) clearTimeout(stacktime);
-            $this.next().find('a:nth-child('+pos+')').css('visibility','visible');
-            $this.next().find('span:nth-child('+pos+')').css('visibility','visible');
+            //$this.next().find('a:nth-child('+pos+')').css('visibility','visible');
+            //$this.next().find('span:nth-child('+pos+')').css('visibility','visible');
             --pos;
         };
         /* each thumb will appear with a delay */
@@ -39,12 +64,28 @@ $(function(){
 
     /* on mouseleave of the whole <li> the scrollable area is hidden */
     $('#menu li').bind('mouseleave',function () {
+        //console.log('mouseleave');
+        closemenu = true;
         var $this = $(this);
         clearTimeout(stacktime);
+
         $this.find('.sc_menu').css('visibility','hidden').find('a').css('visibility','hidden');
-        $this.find('.sc_menu_wrapper').css('visibility','hidden');
         $this.find('.sc_menu').css('visibility','hidden').find('span').css('visibility','hidden');
+        $this.find('.sc_menu_wrapper').css('visibility','hidden');
         $this.find('.sc_menu_wrapper2').css('visibility','hidden');
+        
+        if( $this.is("#li1") ){
+            $('#mirror1').hide();
+            $('.mytest').css('visibility','hidden');
+        } else if( $this.is("#li2") ){
+            $('#mirror2').hide();
+            $('.mytest2').css('visibility','hidden');
+        } else if( $this.is("#li3") ){
+            $('#mirror3').hide();
+            $('.mytest3').css('visibility','hidden');
+        }
+        
+        
     });
 
     /* when hovering a thumb, change its opacity */
@@ -53,13 +94,13 @@ $(function(){
             var $this = $(this);
             $this.find('img')
             .stop()
-            .animate({'opacity':'1.0'},400);
+            .animate({'opacity':'0'},400);
         },
         function () {
             var $this = $(this);
             $this.find('img')
             .stop()
-            .animate({'opacity':'0.3'},400);
+            .animate({'opacity':'1.0'},400);
         }
     );
 });

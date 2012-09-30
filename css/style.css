@@ -3,6 +3,7 @@
 font-family: Colaborate-Regular;
 src: url('../font/colabreg.ttf');
 }
+a,img{border:0;}
 *{margin:0;padding:0;}
 body{padding:0;margin:0;width:100%;height:100%;min-height:100%;background-color:#000;overflow:hidden;font-family:Colaborate-Regular;}
 div#wrap{width:100%;height:100%;/*display:none;*/
@@ -11,10 +12,42 @@ div#wrap{width:100%;height:100%;/*display:none;*/
 #bg-video{position:absolute;top:0px;left:0px;}
 div#curtain{position:absolute;top:0px;left:0px;width:100%;height:100%;background-color:#000;}
 div#curtain2{position:absolute;top:0px;left:0px;width:100%;height:100%;display:none;z-index:99;background:url('../img/curtain-bg.png');}
+a#close-curtain{position:absolute;top:0px;left:0px;width:100%;height:100%;}
 #canvas{position:absolute;top:0px;left:0px;}
 
 #main{position:absolute;top:0px;left:0px;padding:0;margin:0;width:100%;height:100%;}
 #logo{position:absolute;bottom:20px;right:50px;width:206px;height:48px;background:url('../img/logo.png');display:none;}
 #menu{display:none;}
 #pop-up-video{display:none;z-index:100;position:absolute;text-align:right;}
+
 #close-pop{cursor:pointer;text-align:right;color:white;font-weight:bold;}
+
+#pop-akon{/*background-image:url('../img/video_thumbs_bg/akon_active.jpg');*/
+            background-image:url('../img/video_thumbs/Akon.png');}
+#pop-akon span{display:block;position:relative;width: 110px;height:144px;}
+
+.sc_menu span{}
+.sc_menu img{position:absolute;top:0;left:0;}
+
+#pop-angel{background-image:url('../img/video_thumbs/AngelTaylor.png');}
+#pop-angel span{display:block;position:relative;width: 110px;height:144px;}
+
+#pop-anotherday{background-image:url('../img/video_thumbs/AnotherDay.png');}
+#pop-brown{background-image:url('../img/video_thumbs/Brown.png');}
+#pop-coffee{background-image:url('../img/video_thumbs/Coffee.png');}
+#pop-frally{background-image:url('../img/video_thumbs/Frally.png');}
+#pop-ludofood{background-image:url('../img/video_thumbs/LudoFOOD.png');}
+#pop-ludowhat{background-image:url('../img/video_thumbs/LudoWHATIS.png');}
+#pop-reel{background-image:url('../img/video_thumbs/Reel.png');}
+#pop-trapped{background-image:url('../img/video_thumbs/Trapped.png');}
+#pop-walkaway{background-image:url('../img/video_thumbs/WalkAway.png');}
+
+img.opacity{opacity:0.2;}
+.vid_nav span{display:block;position:relative;width: 110px;height:144px;background-color:#000;}
+.vid_nav p{text-transform:uppercase;font-size:11pt;padding-top:40px;}
+p.ptitle{color:#999;padding-top:0px;}
+
+
+#mirror1{display:none;}
+#mirror2{display:none;}
+#mirror3{display:none;}
