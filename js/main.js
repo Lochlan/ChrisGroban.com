@@ -19,21 +19,16 @@ $(document).ready(function () {
         myPlayer2 = _V_("video2", {"autoplay": true});
 
     if (myAspectRatio < aspectRat) { //window is too tall
-        //Adjust bg video size
+        //Adjust bg video size and position
         myPlayer.size(Math.floor(winH * aspectRat), winH);
-        //Adjust bg video position
-        $('#bg-video').css('left', ((winW - Math.floor(winH * aspectRat)) / 2) + 'px');
-        $('#bg-video').css('top', '0px');
+        $('#bg-video').css({left: ((winW - Math.floor(winH * aspectRat)) / 2) + 'px', top: '0px'});
     } else { //window is too wide
-        //Adjust bg video size
+        //Adjust bg video size and position
         myPlayer.size(winW, Math.floor(winW / aspectRat));
-        //Adjust bg video position
-        $('#bg-video').css('top', ((winH - Math.floor(winW / aspectRat)) / 2) + 'px');  //adjust top
-        $('#bg-video').css('left', '0px');
+        $('#bg-video').css({left: '0px', top: ((winH - Math.floor(winW / aspectRat)) / 2) + 'px'});
     }
     //Adjust "curtain" size to be the same as the window
-    $('#close-curtain').css('height', winH);
-    $('#close-curtain').css('width', winW);
+    $('#close-curtain').css({height: winH, width: winW});
     //Adjust heights of navigation menus
     $(".navmen").css('height', winH - 40 + 'px');
 
@@ -43,15 +38,12 @@ $(document).ready(function () {
         winH = $(window).height();
         myAspectRatio = winW / winH;
 
-        $('#close-curtain').css('height', winH);
-        $('#close-curtain').css('width', winW);
+        $('#close-curtain').css({height: winH, width: winW});
 
         if (myAspectRatio < aspectRat) {  //window is too tall
-            //Adjust bg video size
+            //Adjust bg video size and position
             myPlayer.size(Math.floor(winH * aspectRat), winH);
-            //Adjust bg video position
-            $('#bg-video').css('left', ((winW - Math.floor(winH * aspectRat)) / 2) + 'px');
-            $('#bg-video').css('top', '0px');
+            $('#bg-video').css({top: '0px', left: ((winW - Math.floor(winH * aspectRat)) / 2) + 'px'});
 
             //pop up
             tempW = parseInt((8 / 10) * winW, 10);
@@ -59,14 +51,11 @@ $(document).ready(function () {
             myPlayer2.size(tempW, tempH);
             tempTop = parseInt((winH - tempH) / 2, 10);
             tempLeft = parseInt((winW - tempW) / 2, 10);
-            $('#pop-up-video').css('top', tempTop);
-            $('#pop-up-video').css('left', tempLeft);
+            $('#pop-up-video').css({top: tempTop, left: tempLeft});
         } else { //window is too wide
-            //Adjust bg video size
+            //Adjust bg video size and position
             myPlayer.size(winW, Math.floor(winW / aspectRat));
-            //Adjust bg video position
-            $('#bg-video').css('top', ((winH - Math.floor(winW / aspectRat)) / 2) + 'px');
-            $('#bg-video').css('left', '0px');
+            $('#bg-video').css({top: ((winH - Math.floor(winW / aspectRat)) / 2) + 'px', left: '0px'});
 
             //pop up
             tempH = parseInt((8 / 10) * winH, 10);
@@ -74,8 +63,7 @@ $(document).ready(function () {
             myPlayer2.size(tempW, tempH);
             tempTop = parseInt((winH - tempH) / 2, 10);
             tempLeft = parseInt((winW - tempW) / 2, 10);
-            $('#pop-up-video').css('top', tempTop);
-            $('#pop-up-video').css('left', tempLeft);
+            $('#pop-up-video').css({top: tempTop, left: tempLeft});
         }
 
         tempH = winH - 40 + 'px';
@@ -139,16 +127,14 @@ $(document).ready(function () {
             myPlayer2.size(tempW, tempH);
             tempTop = parseInt((winH - tempH) / 2, 10);
             tempLeft = parseInt((winW - tempW) / 2, 10);
-            $('#pop-up-video').css('top', tempTop);
-            $('#pop-up-video').css('left', tempLeft);
+            $('#pop-up-video').css({top: tempTop, left: tempLeft});
         } else {
             tempH = parseInt((8 / 10) * winH, 10);
             tempW = parseInt((15.9 / 9) * tempH, 10);
             myPlayer2.size(tempW, tempH);
             tempTop = parseInt((winH - tempH) / 2, 10);
             tempLeft = parseInt((winW - tempW) / 2, 10);
-            $('#pop-up-video').css('top', tempTop);
-            $('#pop-up-video').css('left', tempLeft);
+            $('#pop-up-video').css({top: tempTop, left: tempLeft});
         }
 
         _V_("bg-video").pause();        //pause bg video
