@@ -1,72 +1,58 @@
+/*jslint browser: true*/
+/*global $, jQuery*/
+/*jslint nomen: true*/
 $(document).ready(function () {
     "use strict";
     //globals
     var paused = false,
-        thing,
         canvas = document.getElementById("canvas"),
-        W = canvas.width,
-        H = canvas.height,
         winW = $(window).width(),
         winH = $(window).height(),
-        newW = winW,
-        newH = winH,
-        newL = 0,
-        newT = 0,
-        temp,
+        buffer_interval,                //The interval used for checking whether or not to begin the bg video
         tempH = 0,
         tempW = 0,
         tempTop = 0,
         tempLeft = 0,
         aspectRat = 192 / 108,
         myAspectRatio = winW / winH,
-        v2aspectRat = 4 / 3,
-        howMuchIsDownloaded,
-        bufferedTimeRange,
         startBGMovie,
         myPlayer = _V_("bg-video", { "controls": false, "autoplay": true, "preload": "auto", "loop": true }),
         myPlayer2 = _V_("video2", {"autoplay": true});
 
-    if (myAspectRatio < aspectRat) {  //window is too tall        
-        newW = Math.floor(winH * aspectRat);
-        myPlayer.size(newW, newH);
-        newL = ((winW - newW) / 2) + 'px';
-
-        $('#bg-video').css('left', newL);
+    if (myAspectRatio < aspectRat) { //window is too tall
+        //Adjust bg video size
+        myPlayer.size(Math.floor(winH * aspectRat), winH);
+        //Adjust bg video position
+        $('#bg-video').css('left', ((winW - Math.floor(winH * aspectRat)) / 2) + 'px');
         $('#bg-video').css('top', '0px');
     } else { //window is too wide
-        newH = Math.floor(winW / aspectRat);
-        myPlayer.size(newW, newH);
-        newT = ((winH - newH) / 2) + 'px';
-        $('#bg-video').css('top', newT);
+        //Adjust bg video size
+        myPlayer.size(winW, Math.floor(winW / aspectRat));
+        //Adjust bg video position
+        $('#bg-video').css('top', ((winH - Math.floor(winW / aspectRat)) / 2) + 'px');  //adjust top
         $('#bg-video').css('left', '0px');
     }
+    //Adjust "curtain" size to be the same as the window
     $('#close-curtain').css('height', winH);
     $('#close-curtain').css('width', winW);
-    tempH = winH - 40 + 'px';
-    $(".navmen").css('height', tempH);
+    //Adjust heights of navigation menus
+    $(".navmen").css('height', winH - 40 + 'px');
 
     // window resize
     $(window).bind("resize", function () {
         winW = $(window).width();
         winH = $(window).height();
-        newW = winW;
-        newH = winH;
-        aspectRat = 192 / 108;
         myAspectRatio = winW / winH;
 
         $('#close-curtain').css('height', winH);
         $('#close-curtain').css('width', winW);
 
-        if (myAspectRatio < aspectRat) {  //too tall
-            //bg
-            newW = Math.floor(winH * aspectRat);
-
-            myPlayer.size(newW, newH);
-
-            newL = ((winW - newW) / 2) + 'px';
-            $('#bg-video').css('left', newL);
+        if (myAspectRatio < aspectRat) {  //window is too tall
+            //Adjust bg video size
+            myPlayer.size(Math.floor(winH * aspectRat), winH);
+            //Adjust bg video position
+            $('#bg-video').css('left', ((winW - Math.floor(winH * aspectRat)) / 2) + 'px');
             $('#bg-video').css('top', '0px');
-            //console.log('setting left to '+newL);
 
             //pop up
             tempW = parseInt((8 / 10) * winW, 10);
@@ -76,17 +62,12 @@ $(document).ready(function () {
             tempLeft = parseInt((winW - tempW) / 2, 10);
             $('#pop-up-video').css('top', tempTop);
             $('#pop-up-video').css('left', tempLeft);
-        } else { //too wide
-            //bg
-            newH = Math.floor(winW / aspectRat);
-
-            myPlayer.size(newW, newH);
-
-            //set top
-            newT = ((winH - newH) / 2) + 'px';
-            $('#bg-video').css('top', newT);
+        } else { //window is too wide
+            //Adjust bg video size
+            myPlayer.size(winW, Math.floor(winW / aspectRat));
+            //Adjust bg video position
+            $('#bg-video').css('top', ((winH - Math.floor(winW / aspectRat)) / 2) + 'px');
             $('#bg-video').css('left', '0px');
-            //console.log('setting top to '+newT);
 
             //pop up
             tempH = parseInt((8 / 10) * winH, 10);
@@ -119,16 +100,14 @@ $(document).ready(function () {
         $('#loadnum').append('.');
 
         if (bufperc === 1) {
-            clearInterval(temp);
+            clearInterval(buffer_interval);
         }
     }
-    temp = setInterval(function () { bufferVideo(); }, 500);
+    buffer_interval = setInterval(function () { bufferVideo(); }, 500);
 
     //starts open sequence of effects
-        startBGMovie = function () {
+    startBGMovie = function () {
         myPlayer = this;
-        howMuchIsDownloaded = myPlayer.bufferedPercent();
-        bufferedTimeRange = myPlayer.buffered();
 
         $("#loading").hide();
 
@@ -251,12 +230,6 @@ $(document).ready(function () {
         canvas.width = document.width;
         canvas.height = document.height;
 
-        //Canvas dimensions
-        W = canvas.width;
-        H = canvas.height;
-
-        //var ctx=canvas.getContext("2d");
-        //ctx.clearRect(0, 0, W, H);  //clear canvas
         myPlayer2.pause();
         $('#curtain2').hide();
         $('#pop-up-video').hide();
@@ -268,12 +241,6 @@ $(document).ready(function () {
         canvas.width = document.width;
         canvas.height = document.height;
 
-        //Canvas dimensions
-        W = canvas.width;
-        H = canvas.height;
-
-        //var ctx=canvas.getContext("2d");
-        //ctx.clearRect(0, 0, W, H);  //clear canvas
         myPlayer2.pause();
         $('#curtain2').hide();
         $('#pop-up-video').hide();
