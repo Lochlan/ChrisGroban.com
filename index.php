@@ -71,17 +71,17 @@ if ($detect->isMobile()) {
             <div class="sc_menu_wrapper">
                 <div class="sc_menu vid_nav">
                     
-                    <a id="pop-akon" class="mytest"><span class="mytest"><p>Akon</p><p class="ptitle">EPK</p><img src="./img/video_thumbs/Akon.png" alt="" class="pointer" /></span></a>
-                    <a id="pop-angel" class="mytest"><span class="mytest"><p>Angel Taylor</p><p class="ptitle">EPK</p><img src="./img/video_thumbs/AngelTaylor.png" alt="" class="pointer" /></span></a>
-                    <a id="pop-brown" class="mytest"><span class="mytest"><p>Brown</p><p class="ptitle">Short Film</p><img src="./img/video_thumbs/Brown.png" alt="" class="pointer" /></span></a>
-                    <a id="pop-frally" class="mytest"><span class="mytest"><p>Frally "Casualty"</p><p class="ptitle">Music Video</p><img src="./img/video_thumbs/Frally.png" alt="" class="pointer" /></span></a>
-                    <a id="pop-trapped" class="mytest"><span class="mytest"><p>Molly Bryant "Trapped"</p><p class="ptitle">Music Video</p><img src="./img/video_thumbs/Trapped.png" alt="" class="pointer" /></span></a>
-                    <a id="pop-coffee" class="mytest"><span class="mytest"><p>Coffee</p><p class="ptitle">Short Film</p><img src="./img/video_thumbs/Coffee.png" alt="" class="pointer" /></span></a>
-                    <a id="pop-anotherday" class="mytest"><span class="mytest"><p>Another Day</p><p class="ptitle">Excerpt from Film</p><img src="./img/video_thumbs/AnotherDay.png" alt="" class="pointer" /></span></a>
-                    <a id="pop-walkaway" class="mytest"><span class="mytest"><p>Josh Groban<br />"If I Walk Away"</p><p class="ptitle">Music Video</p><img src="./img/video_thumbs/WalkAway.png" alt="" class="pointer" /></span></a>
-                    <a id="pop-ludofood" class="mytest"><span class="mytest"><p>Ludobites:<br/>The Food</p><p class="ptitle">Short Doc</p><img src="./img/video_thumbs/LudoFOOD.png" alt="" class="pointer" /></span></a>
-                    <a id="pop-ludowhat" class="mytest"><span class="mytest"><p>What is Ludobites?</p><p class="ptitle">Short Doc</p><img src="./img/video_thumbs/LudoWHATIS.png" alt="" class="pointer" /></span></a>
-                    <a id="pop-reel" class="mytest"><span class="mytest"><p>Chris Groban</p><p class="ptitle">Reel</p><img src="./img/video_thumbs/Reel.png" alt="" class="pointer" /></span></a>
+                    <a id="pop-akon" class="mytest" data-vidurl="1076_AEPK_101202_1000-ForSite"><span class="mytest"><p>Akon</p><p class="ptitle">EPK</p><img src="./img/video_thumbs/Akon.png" alt="" class="pointer" /></span></a>
+                    <a id="pop-angel" class="mytest" data-vidurl="Angel%20Taylor%20EPK%202010"><span class="mytest"><p>Angel Taylor</p><p class="ptitle">EPK</p><img src="./img/video_thumbs/AngelTaylor.png" alt="" class="pointer" /></span></a>
+                    <a id="pop-brown" class="mytest" data-vidurl="BROWN"><span class="mytest"><p>Brown</p><p class="ptitle">Short Film</p><img src="./img/video_thumbs/Brown.png" alt="" class="pointer" /></span></a>
+                    <a id="pop-frally" class="mytest" data-vidurl="Frally_CASUALTY_101212_1000_FIN-ForSite"><span class="mytest"><p>Frally "Casualty"</p><p class="ptitle">Music Video</p><img src="./img/video_thumbs/Frally.png" alt="" class="pointer" /></span></a>
+                    <a id="pop-trapped" class="mytest" data-vidurl="TRAPPED_110505_1200-ForSite"><span class="mytest"><p>Molly Bryant "Trapped"</p><p class="ptitle">Music Video</p><img src="./img/video_thumbs/Trapped.png" alt="" class="pointer" /></span></a>
+                    <a id="pop-coffee" class="mytest" data-vidurl="COFFEE"><span class="mytest"><p>Coffee</p><p class="ptitle">Short Film</p><img src="./img/video_thumbs/Coffee.png" alt="" class="pointer" /></span></a>
+                    <a id="pop-anotherday" class="mytest" data-vidurl="Excerpt%20from%20Another%20Day"><span class="mytest"><p>Another Day</p><p class="ptitle">Excerpt from Film</p><img src="./img/video_thumbs/AnotherDay.png" alt="" class="pointer" /></span></a>
+                    <a id="pop-walkaway" class="mytest" data-vidurl="WalkAway_111203_1200-ForSite"><span class="mytest"><p>Josh Groban<br />"If I Walk Away"</p><p class="ptitle">Music Video</p><img src="./img/video_thumbs/WalkAway.png" alt="" class="pointer" /></span></a>
+                    <a id="pop-ludofood" class="mytest" data-vidurl="Ludo_FOOD_110125_1400-QuickTime%20H.264"><span class="mytest"><p>Ludobites:<br/>The Food</p><p class="ptitle">Short Doc</p><img src="./img/video_thumbs/LudoFOOD.png" alt="" class="pointer" /></span></a>
+                    <a id="pop-ludowhat" class="mytest" data-vidurl="Ludo_WhatIsLudobites_110127_1500-QuickTime%20H.264"><span class="mytest"><p>What is Ludobites?</p><p class="ptitle">Short Doc</p><img src="./img/video_thumbs/LudoWHATIS.png" alt="" class="pointer" /></span></a>
+                    <a id="pop-reel" class="mytest" data-vidurl="REEL_Director_120119_1600_v2_720x405-ForSite"><span class="mytest"><p>Chris Groban</p><p class="ptitle">Reel</p><img src="./img/video_thumbs/Reel.png" alt="" class="pointer" /></span></a>
                 </div>
             </div>
         </li>
@@ -112,9 +112,9 @@ if ($detect->isMobile()) {
     </ul>
     
     <div id="curtain2" >
-        <div id="close-curtain"> </div>
+        <div id="close-curtain" class="close-pop"> </div>
         <div id="pop-up-video">
-                <a id="close-pop" >X close</a>
+                <a id="close-pop" class="close-pop">X close</a>
         <br/>
             <video id="video2" class="video-js vjs-default-skin"
                 controls width="640" height="480"

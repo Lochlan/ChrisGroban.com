@@ -4,8 +4,7 @@
 $(document).ready(function () {
     "use strict";
     //globals
-    var paused = false,
-        canvas = document.getElementById("canvas"),
+    var canvas = document.getElementById("canvas"),
         winW = $(window).width(),
         winH = $(window).height(),
         buffer_interval,                //The interval used for checking whether or not to begin the bg video
@@ -122,132 +121,59 @@ $(document).ready(function () {
 
     //start playing the pop up video
     function playVideo(filepath) {
-        if (!paused) {
+        winW = $(window).width();
+        winH = $(window).height();
+        filepath = 'http://chrisgroban.com/client_review/mp4forsite/' + filepath + '.mp4';
+        myPlayer2.width(6 * 150);
+        myPlayer2.height(6 * 84);
 
-            winW = $(window).width();
-            winH = $(window).height();
-            filepath = filepath + '.mp4';
-            myPlayer2.width(6 * 150);
-            myPlayer2.height(6 * 84);
+        $('#curtain2').show();
 
-            $('#curtain2').show();
+        myPlayer2.src([
+            { type: "video/mp4", src: filepath }
+        ]);
 
-            myPlayer2.src([
-                { type: "video/mp4", src: filepath }
-            ]);
-
-            if (myAspectRatio < aspectRat) {
-                tempW = parseInt((8 / 10) * winW, 10);
-                tempH = parseInt((9 / 15.9) * tempW, 10);
-                myPlayer2.size(tempW, tempH);
-                tempTop = parseInt((winH - tempH) / 2, 10);
-                tempLeft = parseInt((winW - tempW) / 2, 10);
-                $('#pop-up-video').css('top', tempTop);
-                $('#pop-up-video').css('left', tempLeft);
-            } else {
-                tempH = parseInt((8 / 10) * winH, 10);
-                tempW = parseInt((15.9 / 9) * tempH, 10);
-                myPlayer2.size(tempW, tempH);
-                tempTop = parseInt((winH - tempH) / 2, 10);
-                tempLeft = parseInt((winW - tempW) / 2, 10);
-                $('#pop-up-video').css('top', tempTop);
-                $('#pop-up-video').css('left', tempLeft);
-            }
-
-            $('#pop-up-video').fadeIn(500);
-
-            paused = true;
-
-            _V_("bg-video").pause();
-
-            myPlayer2.play();
-
+        if (myAspectRatio < aspectRat) {
+            tempW = parseInt((8 / 10) * winW, 10);
+            tempH = parseInt((9 / 15.9) * tempW, 10);
+            myPlayer2.size(tempW, tempH);
+            tempTop = parseInt((winH - tempH) / 2, 10);
+            tempLeft = parseInt((winW - tempW) / 2, 10);
+            $('#pop-up-video').css('top', tempTop);
+            $('#pop-up-video').css('left', tempLeft);
+        } else {
+            tempH = parseInt((8 / 10) * winH, 10);
+            tempW = parseInt((15.9 / 9) * tempH, 10);
+            myPlayer2.size(tempW, tempH);
+            tempTop = parseInt((winH - tempH) / 2, 10);
+            tempLeft = parseInt((winW - tempW) / 2, 10);
+            $('#pop-up-video').css('top', tempTop);
+            $('#pop-up-video').css('left', tempLeft);
         }
+
+        _V_("bg-video").pause();        //pause bg video
+        $('#pop-up-video').fadeIn(500); //fade in pop-up video wrapper
+        myPlayer2.play();               //start pop-up video
     }
 
     //handle opening  pop up video
-    $('#pop-akon').click(function () {
+    $('a.mytest').click(function () {
         myPlayer.pause();
-        playVideo("http://chrisgroban.com/client_review/mp4forsite/1076_AEPK_101202_1000-ForSite");
+        playVideo($(this).attr('data-vidurl'));
     });
-
-    $('#pop-angel').click(function () {
-        myPlayer.pause();
-        playVideo("http://www.chrisgroban.com/client_review/mp4forsite/Angel%20Taylor%20EPK%202010");
-    });
-
-    $('#pop-anotherday').click(function () {
-        myPlayer.pause();
-        playVideo("http://www.chrisgroban.com/client_review/mp4forsite/Excerpt%20from%20Another%20Day");
-    });
-
-    $('#pop-brown').click(function () {
-        myPlayer.pause();
-        playVideo("http://www.chrisgroban.com/client_review/mp4forsite/BROWN");
-    });
-
-    $('#pop-coffee').click(function () {
-        myPlayer.pause();
-        playVideo("http://www.chrisgroban.com/client_review/mp4forsite/COFFEE");
-    });
-
-    $('#pop-frally').click(function () {
-        myPlayer.pause();
-        playVideo("http://chrisgroban.com/client_review/mp4forsite/Frally_CASUALTY_101212_1000_FIN-ForSite");
-    });
-
-
-    $('#pop-ludofood').click(function () {
-        myPlayer.pause();
-        playVideo("http://chrisgroban.com/client_review/mp4forsite/Ludo_FOOD_110125_1400-QuickTime%20H.264");
-    });
-
-    $('#pop-ludowhat').click(function () {
-        myPlayer.pause();
-        playVideo("http://chrisgroban.com/client_review/mp4forsite/Ludo_WhatIsLudobites_110127_1500-QuickTime%20H.264");
-    });
-
-    $('#pop-reel').click(function () {
-        myPlayer.pause();
-        playVideo("http://chrisgroban.com/client_review/mp4forsite/REEL_Director_120119_1600_v2_720x405-ForSite");
-    });
-
-    $('#pop-trapped').click(function () {
-        myPlayer.pause();
-        playVideo("http://chrisgroban.com/client_review/mp4forsite/TRAPPED_110505_1200-ForSite");
-    });
-
-    $('#pop-walkaway').click(function () {
-        myPlayer.pause();
-        playVideo("http://chrisgroban.com/client_review/mp4forsite/WalkAway_111203_1200-ForSite");
-    });
-
 
     //Handle closing the pop up
-    $('#close-pop').click(function () {
-
-        //Set canvas size
-        canvas.width = document.width;
+    $('.close-pop').click(function () {
+        canvas.width = document.width;      //Set canvas size
         canvas.height = document.height;
 
-        myPlayer2.pause();
+        myPlayer2.pause();                  //Close pop-up video
         $('#curtain2').hide();
         $('#pop-up-video').hide();
-        paused = false;
-        myPlayer.play();
-    });
-    $('#close-curtain').click(function () {
-         //Set canvas size
-        canvas.width = document.width;
-        canvas.height = document.height;
 
-        myPlayer2.pause();
-        $('#curtain2').hide();
-        $('#pop-up-video').hide();
-        paused = false;
-        myPlayer.play();
+        myPlayer.play();                    //Start bg video
     });
 
+    //When the loaded data event fires from videojs, begin the intro animations
     myPlayer.addEvent("loadeddata", startBGMovie);
-
 });
