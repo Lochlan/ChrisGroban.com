@@ -27,10 +27,9 @@ $(document).ready(function () {
         myPlayer.size(winW, Math.floor(winW / aspectRat));
         $('#bg-video').css({left: '0px', top: ((winH - Math.floor(winW / aspectRat)) / 2) + 'px'});
     }
-    //Adjust "curtain" size to be the same as the window
-    $('#close-curtain').css({height: winH, width: winW});
-    //Adjust heights of navigation menus
-    $(".navmen").css('height', winH - 40 + 'px');
+    
+    $('#close-curtain').css({height: winH, width: winW});   //Adjust "curtain" size to be the same as the window
+    $(".navmen").css('height', winH - 40 + 'px');           //Adjust heights of navigation menus
 
     // window resize
     $(window).bind("resize", function () {
@@ -66,8 +65,7 @@ $(document).ready(function () {
             $('#pop-up-video').css({top: tempTop, left: tempLeft});
         }
 
-        tempH = winH - 40 + 'px';
-        $(".navmen").css('height', tempH);
+        $(".navmen").css('height', winH - 40 + 'px');       //Adjust heights of navigation menus
     });
 
     function toHex(n) {
@@ -92,18 +90,15 @@ $(document).ready(function () {
     }
     buffer_interval = setInterval(function () { bufferVideo(); }, 500);
 
-    //starts open sequence of effects
+    //starts opening sequence of effects
     startBGMovie = function () {
         myPlayer = this;
 
-        $("#loading").hide();
-
-        // Do something when the event is fired
-
-        $("#wrapcurtain").delay(1000).fadeOut(3000);
-        $("div#logo").delay(4000).fadeIn(1000);
-        $("#menu").delay(4000).fadeIn(1000);
-        $("#whitebar").delay(4000).fadeIn(1000);
+        $("#loading").hide();                           //Hide loading message
+        $("#wrapcurtain").delay(1000).fadeOut(3000);    //Fade in video
+        $("div#logo").delay(4000).fadeIn(1000);         //Fade in logo
+        $("#menu").delay(4000).fadeIn(1000);            //Fade in menu
+        $("#whitebar").delay(4000).fadeIn(1000);        //Fade in white bar
 
     };
 
@@ -142,7 +137,7 @@ $(document).ready(function () {
         myPlayer2.play();               //start pop-up video
     }
 
-    //handle opening  pop up video
+    //handle opening the pop up video
     $('a.mytest').click(function () {
         myPlayer.pause();
         playVideo($(this).attr('data-vidurl'));
