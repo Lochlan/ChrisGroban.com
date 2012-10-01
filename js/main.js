@@ -1,6 +1,6 @@
 /*jslint browser: true*/
-/*global $, jQuery*/
 /*jslint nomen: true*/
+/*global $, jQuery, _V_*/
 $(document).ready(function () {
     "use strict";
     //globals
@@ -10,34 +10,21 @@ $(document).ready(function () {
         buffer_interval,                //The interval used for checking whether or not to begin the bg video
         tempH = 0,
         tempW = 0,
-        tempTop = 0,
-        tempLeft = 0,
+        popupTop = 0,
+        popupLeft = 0,
         aspectRat = 192 / 108,
         myAspectRatio = winW / winH,
         startBGMovie,
         myPlayer = _V_("bg-video", { "controls": false, "autoplay": true, "preload": "auto", "loop": true }),
         myPlayer2 = _V_("video2", {"autoplay": true});
 
-    if (myAspectRatio < aspectRat) { //window is too tall
-        //Adjust bg video size and position
-        myPlayer.size(Math.floor(winH * aspectRat), winH);
-        $('#bg-video').css({left: ((winW - Math.floor(winH * aspectRat)) / 2) + 'px', top: '0px'});
-    } else { //window is too wide
-        //Adjust bg video size and position
-        myPlayer.size(winW, Math.floor(winW / aspectRat));
-        $('#bg-video').css({left: '0px', top: ((winH - Math.floor(winW / aspectRat)) / 2) + 'px'});
-    }
-    
-    $('#close-curtain').css({height: winH, width: winW});   //Adjust "curtain" size to be the same as the window
-    $(".navmen").css('height', winH - 40 + 'px');           //Adjust heights of navigation menus
-
-    // window resize
-    $(window).bind("resize", function () {
+    function windowSizeHandler() {
         winW = $(window).width();
         winH = $(window).height();
         myAspectRatio = winW / winH;
 
-        $('#close-curtain').css({height: winH, width: winW});
+        $('#close-curtain').css({height: winH, width: winW});   //Adjust "curtain" size to be the same as the window
+        $(".navmen").css('height', winH - 40 + 'px');           //Adjust heights of navigation menus
 
         if (myAspectRatio < aspectRat) {  //window is too tall
             //Adjust bg video size and position
@@ -45,31 +32,29 @@ $(document).ready(function () {
             $('#bg-video').css({top: '0px', left: ((winW - Math.floor(winH * aspectRat)) / 2) + 'px'});
 
             //pop up
-            tempW = parseInt((8 / 10) * winW, 10);
-            tempH = parseInt((9 / 15.9) * tempW, 10);
+            tempW = Math.floor((8 / 10) * winW);
+            tempH = Math.floor((9 / 15.9) * tempW);
             myPlayer2.size(tempW, tempH);
-            tempTop = parseInt((winH - tempH) / 2, 10);
-            tempLeft = parseInt((winW - tempW) / 2, 10);
-            $('#pop-up-video').css({top: tempTop, left: tempLeft});
-        } else { //window is too wide
+            popupTop = Math.floor((winH - tempH) / 2);
+            popupLeft = Math.floor((winW - tempW) / 2);
+            $('#pop-up-video').css({top: popupTop, left: popupLeft});
+        } else { //window is too wide (or has the correct aspect ratio)
             //Adjust bg video size and position
             myPlayer.size(winW, Math.floor(winW / aspectRat));
             $('#bg-video').css({top: ((winH - Math.floor(winW / aspectRat)) / 2) + 'px', left: '0px'});
 
             //pop up
-            tempH = parseInt((8 / 10) * winH, 10);
-            tempW = parseInt((15.9 / 9) * tempH, 10);
+            tempH = Math.floor((8 / 10) * winH);
+            tempW = Math.floor((15.9 / 9) * tempH);
             myPlayer2.size(tempW, tempH);
-            tempTop = parseInt((winH - tempH) / 2, 10);
-            tempLeft = parseInt((winW - tempW) / 2, 10);
-            $('#pop-up-video').css({top: tempTop, left: tempLeft});
+            popupTop = Math.floor((winH - tempH) / 2);
+            popupLeft = Math.floor((winW - tempW) / 2);
+            $('#pop-up-video').css({top: popupTop, left: popupLeft});
         }
-
-        $(".navmen").css('height', winH - 40 + 'px');       //Adjust heights of navigation menus
-    });
+    }
 
     function toHex(n) {
-        n = parseInt(n, 10);
+        n = Math.floor(n);
         if (isNaN(n)) {
             return "00";
         }
@@ -78,17 +63,6 @@ $(document).ready(function () {
     }
 
     function rgbToHex(R, G, B) { return toHex(R) + toHex(G) + toHex(B); }
-
-    function bufferVideo() {
-        myPlayer = _V_("bg-video");
-        var bufperc = myPlayer.bufferedPercent();
-        $('#loadnum').append('.');
-
-        if (bufperc === 1) {
-            clearInterval(buffer_interval);
-        }
-    }
-    buffer_interval = setInterval(function () { bufferVideo(); }, 500);
 
     //starts opening sequence of effects
     startBGMovie = function () {
@@ -107,30 +81,12 @@ $(document).ready(function () {
         winW = $(window).width();
         winH = $(window).height();
         filepath = 'http://chrisgroban.com/client_review/mp4forsite/' + filepath + '.mp4';
-        myPlayer2.width(6 * 150);
-        myPlayer2.height(6 * 84);
 
         $('#curtain2').show();
 
         myPlayer2.src([
             { type: "video/mp4", src: filepath }
         ]);
-
-        if (myAspectRatio < aspectRat) {
-            tempW = parseInt((8 / 10) * winW, 10);
-            tempH = parseInt((9 / 15.9) * tempW, 10);
-            myPlayer2.size(tempW, tempH);
-            tempTop = parseInt((winH - tempH) / 2, 10);
-            tempLeft = parseInt((winW - tempW) / 2, 10);
-            $('#pop-up-video').css({top: tempTop, left: tempLeft});
-        } else {
-            tempH = parseInt((8 / 10) * winH, 10);
-            tempW = parseInt((15.9 / 9) * tempH, 10);
-            myPlayer2.size(tempW, tempH);
-            tempTop = parseInt((winH - tempH) / 2, 10);
-            tempLeft = parseInt((winW - tempW) / 2, 10);
-            $('#pop-up-video').css({top: tempTop, left: tempLeft});
-        }
 
         _V_("bg-video").pause();        //pause bg video
         $('#pop-up-video').fadeIn(500); //fade in pop-up video wrapper
@@ -155,6 +111,21 @@ $(document).ready(function () {
         myPlayer.play();                    //Start bg video
     });
 
-    //When the loaded data event fires from videojs, begin the intro animations
-    myPlayer.addEvent("loadeddata", startBGMovie);
+    function bufferVideo() {
+        myPlayer = _V_("bg-video");
+        var bufperc = myPlayer.bufferedPercent();
+        $('#loadnum').append('.');
+
+        if (bufperc === 1) {
+            clearInterval(buffer_interval);
+        }
+    }
+
+    buffer_interval = setInterval(function () { bufferVideo(); }, 500);
+
+    myPlayer.addEvent("loadeddata", startBGMovie);  //Start once bg video is loaded
+
+    // window sizing
+    windowSizeHandler();                            //Initial size
+    $(window).bind("resize", windowSizeHandler);    //Handle resize
 });
