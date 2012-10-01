@@ -4,24 +4,20 @@
 $(document).ready(function () {
     "use strict";
     //globals
-    var canvas = document.getElementById("canvas"),
-        winW = $(window).width(),
-        winH = $(window).height(),
-        buffer_interval,                //The interval used for checking whether or not to begin the bg video
-        tempH = 0,
-        tempW = 0,
-        popupTop = 0,
-        popupLeft = 0,
-        aspectRat = 192 / 108,
-        myAspectRatio = winW / winH,
+    var buffer_interval,                //The interval used for checking whether or not to begin the bg video
         startBGMovie,
         myPlayer = _V_("bg-video", { "controls": false, "autoplay": true, "preload": "auto", "loop": true }),
         myPlayer2 = _V_("video2", {"autoplay": true});
 
     function windowSizeHandler() {
-        winW = $(window).width();
-        winH = $(window).height();
-        myAspectRatio = winW / winH;
+        var winW = $(window).width(),
+            winH = $(window).height(),
+            myAspectRatio = winW / winH,
+            aspectRat = 192 / 108,
+            tempH,
+            tempW,
+            popupTop,
+            popupLeft;
 
         $('#close-curtain').css({height: winH, width: winW});   //Adjust "curtain" size to be the same as the window
         $(".navmen").css('height', winH - 40 + 'px');           //Adjust heights of navigation menus
@@ -65,7 +61,7 @@ $(document).ready(function () {
     function rgbToHex(R, G, B) { return toHex(R) + toHex(G) + toHex(B); }
 
     //starts opening sequence of effects
-    startBGMovie = function () {
+    function startBGMovie() {
         myPlayer = this;
 
         $("#loading").hide();                           //Hide loading message
@@ -78,8 +74,8 @@ $(document).ready(function () {
 
     //start playing the pop up video
     function playVideo(filepath) {
-        winW = $(window).width();
-        winH = $(window).height();
+        var winW = $(window).width(),
+            winH = $(window).height();
         filepath = 'http://chrisgroban.com/client_review/mp4forsite/' + filepath + '.mp4';
 
         $('#curtain2').show();
@@ -101,6 +97,7 @@ $(document).ready(function () {
 
     //Handle closing the pop up
     $('.close-pop').click(function () {
+        var canvas = document.getElementById("canvas");
         canvas.width = document.width;      //Set canvas size
         canvas.height = document.height;
 
