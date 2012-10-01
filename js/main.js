@@ -5,7 +5,6 @@ $(document).ready(function () {
     "use strict";
     //globals
     var buffer_interval,                //The interval used for checking whether or not to begin the bg video
-        startBGMovie,
         myPlayer = _V_("bg-video", { "controls": false, "autoplay": true, "preload": "auto", "loop": true }),
         myPlayer2 = _V_("video2", {"autoplay": true});
 
@@ -62,15 +61,14 @@ $(document).ready(function () {
 
     //starts opening sequence of effects
     function startBGMovie() {
-        myPlayer = this;
+        myPlayer = _V_("bg-video");
 
         $("#loading").hide();                           //Hide loading message
         $("#wrapcurtain").delay(1000).fadeOut(3000);    //Fade in video
         $("div#logo").delay(4000).fadeIn(1000);         //Fade in logo
         $("#menu").delay(4000).fadeIn(1000);            //Fade in menu
         $("#whitebar").delay(4000).fadeIn(1000);        //Fade in white bar
-
-    };
+    }
 
     //start playing the pop up video
     function playVideo(filepath) {
