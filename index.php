@@ -35,21 +35,7 @@ if ($detect->isMobile()) {
     <video id="bg-video" class="video-js vjs-default-skin"
            width="640" height="480"
            data-setup='{ "controls": false, "autoplay": true, "preload": "auto", "loop": true }'>
-        
-        <?php 
-        if(isset($_SERVER['HTTP_USER_AGENT'])){
-            $agent = $_SERVER['HTTP_USER_AGENT'];
-            if(strlen(strstr($agent,"Firefox")) > 0 ){ 
-
-            //echo 'firefox';
-
-            } else{?>
-                <source src="http://chrisgroban.com/client_review/mp4forsite/projector_ACTUAL_v3_noaudio_120830_H.mp4" type='video/mp4'>
-            <?}
-        }
-        ?>
-        <source src="http://chrisgroban.com/client_review/mp4forsite/bg/projector_ACTUAL_v3_noaudio_120830_H.ogv" type='video/ogg'>
-        
+        <source src="http://chrisgroban.com/client_review/mp4forsite/projector_ACTUAL_v3_noaudio_120830_H.mp4" type='video/mp4'>
     </video>
     
     <div id="wrapcurtain" ><div id="loading" style="color:#999;position:absolute;top:10px;left:10px;width:50%;height:100%;font-size:11pt;">Buffering video<span id="loadnum"></span></div>        </div>
