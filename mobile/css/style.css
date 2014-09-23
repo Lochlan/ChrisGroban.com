@@ -83,27 +83,4 @@ span.grey{color:#939393;margin-left:49%;margin-top:35px;}
 
 #videowrap{position:absolute;height:0px;width:0px;z-index:-999;overflow: hidden;}
 
-.akonlink{cursor:pointer;}
 
-/*
-@media only screen and (-webkit-min-device-pixel-ratio: 2),  
-  
-only screen and (min--moz-device-pixel-ratio: 2),  
-  
-only screen and (-o-min-device-pixel-ratio: 2/1),  
-  
-only screen and (min-device-pixel-ratio: 2) {  
-  
-    #myelement{  
-
-        background:url(myicon@2x.png) no-repeat;  
-
-    }  
-    
-    a#videos{background-image:url('../img/nav/videos@2x.png');}
-    a#bio{background-image:url('../img/nav/bio@2x.png');}
-    a#contact{background-image:url('../img/nav/contact@2x.png');}
-    div#header{background: url('../img/header/bg@2x.jpg') no-repeat top right;}
-    #c-bio{background:url('../img/bio-bg@2x.jpg') no-repeat top right;}
-  
-}  */
