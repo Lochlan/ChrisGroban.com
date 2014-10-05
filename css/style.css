@@ -20,7 +20,7 @@ body {
     width: 100%;
 }
 
-#wrap {
+.background_video_container {
     height: 100%;
     left: 0;
     position: absolute;
@@ -32,7 +32,7 @@ body {
     position: absolute;
     top: 0;
 }
-#curtain {
+.fade_in {
     background-color: #000;
     height: 100%;
     left: 0;
@@ -40,21 +40,17 @@ body {
     top: 0;
     width: 100%;
 }
-#loading {
-    color: #999;
-    font-size: 11pt;
+.loading_message {
+    color: #666;
+    font-size: 14px;
     height: 100%;
     left: 10px;
     position: absolute;
     top: 10px;
     width: 50%;
 }
-#canvas {
-    left: 0;
-    position: absolute;
-    top: 0;
-}
-#main {
+
+.main_container {
     height: 100%;
     left: 0;
     margin: 0;
@@ -63,7 +59,7 @@ body {
     top: 0;
     width: 100%;
 }
-#logo {
+.logo {
     background: url('../img/logo.png');
     bottom: 20px;
     display: none;
@@ -72,46 +68,42 @@ body {
     right: 50px;
     width: 206px;
 }
-#whitebar {
+.whitebar {
     bottom: 38px;
     display: none;
     left: 0;
     position: absolute;
 }
-#menu {
+.menu {
     display: none;
 }
-#mirror1 {
+.mirror1 {
     bottom: 23px;
     display: none;
     left: 20px;
     opacity: 0.2;
     position: absolute;
 }
-#mirror2 {
+.mirror2 {
     bottom: 23px;
     display: none;
     left: 216px;
     opacity: 0.2;
     position: absolute;
 }
-#mirror3 {
+.mirror3 {
     bottom: 23px;
     display: none;
     left: 411px;
     opacity: 0.2;
     position: absolute;
 }
-#navlink1 {
-    z-index: 1;
-}
-#navlink2 {
+
+.nav_link_2 {
     left: 48px;
-    z-index: 1;
 }
-#navlink3 {
+.nav_link_3 {
     left: 50px;
-    z-index: 1;
 }
 .video_nav_menu div {
     background-color: #000;
@@ -122,7 +114,7 @@ body {
     width: 110px;
 }
 .video_nav_menu p {
-    font-size: 11pt;
+    font-size: 14px;
     padding-top: 40px;
     text-transform: uppercase;
 }
@@ -138,11 +130,7 @@ body {
 .bio_nav_menu_wrapper {
     width: 219px;
 }
-.bio_nav_menu {
-    height: 288px;
-    width: 219px;
-}
-.bio_nav_menu > a {
+.bio_nav_menu_link {
     background: transparent url('../img/nav/bio_background.png') no-repeat top left;
     color: #fff;
     display: block;
@@ -150,8 +138,8 @@ body {
     text-align: left;
     width: 219px;
 }
-.bio_nav_menu > a > div {
-    font-size: 11pt;
+.bio_nav_menu_link > div {
+    font-size: 14px;
     left: 20px;
     position: absolute;
     top: 15px;
@@ -161,32 +149,28 @@ body {
 .contact_nav_menu_wrapper {
     width: 210px;
 }
-.contact_nav_menu {
-    height: 114px;
-    width: 210px;
-}
-.contact_nav_menu > a {
-    background: url('../img/curtain-bg.png') repeat top left;
+.contact_nav_menu_link {
+    background: rgba(0, 0, 0, 0.5);
     height: 114px;
     text-align: left;
-    width: 210px;
 }
-.contact_nav_menu > a > div {
-    font-size: 11pt;
+.contact_nav_menu_link > div {
+    font-size: 14px;
     left: 20px;
     position: absolute;
     top: 15px;
     width: 170px;
     z-index: 90;
 }
-#li2 {
+.bio_nav_menu_container {
     width: 219px;
 }
-#li3 {
+.contact_nav_menu_container {
     width: 210px;
 }
-#modal_layer {
-    background: url('../img/curtain-bg.png');
+
+.modal_layer {
+    background: rgba(0, 0, 0, 0.5);
     display: none;
     height: 100%;
     left: 0;
@@ -195,20 +179,20 @@ body {
     width: 100%;
     z-index: 99;
 }
-#modal_close_layer {
+.modal_close_layer {
     height: 100%;
     left: 0;
     position: absolute;
     top: 0;
     width: 100%;
 }
-#modal_container {
+.modal_container {
     display: none;
     position: absolute;
     text-align: right;
     z-index: 100;
 }
-#close_pop_up {
+.close_modal {
     color: white;
     cursor: pointer;
     font-weight: bold;

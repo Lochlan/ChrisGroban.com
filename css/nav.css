@@ -6,7 +6,7 @@ a {
 }
 
 /* Navigation Style */
-ul.menu {
+.menu {
     bottom: 0px;
     font-size: 15px;
     font-style: normal;
@@ -19,13 +19,13 @@ ul.menu {
     position: fixed;
     width: 700px;
 }
-ul.menu li {
+.nav_menu_container {
     float: left;
     position: relative;
     height: 90%;
     width: 130px;
 }
-ul.menu li > a {
+.nav_link {
     bottom: 0px;
     color: #ddd;
     cursor: pointer;
@@ -39,39 +39,30 @@ ul.menu li > a {
     text-decoration: none;
     text-shadow: 0px 0px 1px #fff;
     width: 110px;
+    z-index: 1;
 }
 .pointer {
     cursor: pointer;
 }
 
 /* Thumb Scrolling Style */
-.sc_menu_wrapper {
+.sc_menu_wrapper, .sc_menu_wrapper_short {
     bottom: 0px;
     left: 0px;
     overflow: hidden;
     position: absolute;
-    top: 0px;
     visibility: hidden;
     width: 110px;
 }
-
-/* Thumb Scrolling Style */
-.sc_menu_wrapper2 {
-    bottom: 0px;
-    bottom: 0px;
-    left: 0px;
-    overflow: hidden;
-    position: absolute;
-    visibility: hidden;
-    width: 150px;
+.sc_menu_wrapper {
+    top: 0px;
 }
 .sc_menu {
-    visibility: hidden;
+    text-align: center;
 }
 .sc_menu a {
     color: #fff;
     display: block;
-    text-align: center;
 }
 .sc_menu img {
     border: none;

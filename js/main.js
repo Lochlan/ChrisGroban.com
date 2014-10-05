@@ -14,76 +14,64 @@ $(function () {
         });
 
     function windowSizeHandler() {
-        var myAspectRatio = $(window).width() / $(window).height(),
-            aspectRat = 192 / 108,
-            tempH,
-            tempW,
-            popupTop,
-            popupLeft;
+        var windowAspectRatio = $(window).width() / $(window).height(),
+            desiredAspectRatio = 192 / 108,
+            backgroundHeight,
+            backgroundWidth,
+            backgroundTop,
+            backgroundLeft,
+            modalHeight,
+            modalWidth;
 
         //Adjust heights of navigation menus
         $(".js-nav_menu_container").css('height', $(window).height() - 40 + 'px');
 
-        if (myAspectRatio < aspectRat) {
+        if (windowAspectRatio < desiredAspectRatio) {
             //window is too tall
-            //Adjust bg video size and position
-            backgroundVideo.size(Math.floor($(window).height() * aspectRat), $(window).height());
-            $('#js-background_video').css({
-                top: '0px',
-                left: (($(window).width() - Math.floor($(window).height() * aspectRat)) / 2) + 'px',
-            });
-
-            //pop up
-            tempW = Math.floor((8 / 10) * $(window).width());
-            tempH = Math.floor((9 / 15.9) * tempW);
-            modalVideo.size(tempW, tempH);
-            popupTop = Math.floor(($(window).height() - tempH) / 2);
-            popupLeft = Math.floor(($(window).width() - tempW) / 2);
-            $('.js-modal_container').css({
-                top: popupTop,
-                left: popupLeft,
-            });
+            backgroundWidth = Math.floor($(window).height() * desiredAspectRatio);
+            backgroundHeight = $(window).height();
+            backgroundTop = 0;
+            backgroundLeft = (($(window).width() - backgroundWidth) / 2) + 'px';
+            modalWidth = Math.floor((8 / 10) * $(window).width());
+            modalHeight = Math.floor((9 / 15.9) * modalWidth);
         } else {
             //window is too wide (or has the correct aspect ratio)
-            //Adjust bg video size and position
-            backgroundVideo.size($(window).width(), Math.floor($(window).width() / aspectRat));
-            $('#js-background_video').css({
-                top: (($(window).height() - Math.floor($(window).width() / aspectRat)) / 2) + 'px', left: '0px',
-            });
+            backgroundWidth = $(window).width();
+            backgroundHeight = Math.floor($(window).width() / desiredAspectRatio);
+            backgroundTop = (($(window).height() - backgroundHeight) / 2) + 'px'
+            backgroundLeft = 0;
 
-            //pop up
-            tempH = Math.floor((8 / 10) * $(window).height());
-            tempW = Math.floor((15.9 / 9) * tempH);
-            modalVideo.size(tempW, tempH);
-            popupTop = Math.floor(($(window).height() - tempH) / 2);
-            popupLeft = Math.floor(($(window).width() - tempW) / 2);
-            $('.js-modal_container').css({
-                top: popupTop,
-                left: popupLeft,
-            });
+            modalHeight = Math.floor((8 / 10) * $(window).height());
+            modalWidth = Math.floor((15.9 / 9) * modalHeight);
         }
+
+        backgroundVideo.size(backgroundWidth, backgroundHeight);
+        $('#js-background_video').css({
+            top: backgroundTop,
+            left: backgroundLeft,
+        });
+
+        modalVideo.size(modalWidth, modalHeight);
+        $('.js-modal_container').css({
+            top: Math.floor(($(window).height() - modalHeight) / 2),
+            left: Math.floor(($(window).width() - modalWidth) / 2),
+        });
     }
 
     //starts opening sequence of effects
     function startBGMovie() {
-        backgroundVideo = _V_("js-background_video");
-
-        $(".js-loading").hide(); //Hide loading message
-        $(".js-curtain").delay(1000).fadeOut(3000); //Fade in video
-        $(".js-logo").delay(4000).fadeIn(1000); //Fade in logo
-        $(".js-menu").delay(4000).fadeIn(1000); //Fade in menu
-        $(".js-whitebar").delay(4000).fadeIn(1000); //Fade in white bar
+        $(".js-loading_message").hide(); //Hide loading message
+        $(".js-fade_in").delay(1000).fadeOut(3000); //Fade in video
+        $(".js-logo, .js-menu, .js-whitebar").delay(4000).fadeIn(1000); //Fade in logo, menu ,and white bar
     }
 
     //start playing the pop up video
-    function playVideo(file) {
-        var path = 'http://chrisgroban.com/client_review/mp4forsite/' + file + '.mp4';
-
+    function playModalVideo(file) {
         $('.js-modal_layer').show();
 
         modalVideo.src([{
             type: "video/mp4",
-            src: path,
+            src: file,
         }]);
 
         _V_("js-background_video").pause();
@@ -92,11 +80,9 @@ $(function () {
     }
 
     function bufferVideo() {
-        backgroundVideo = _V_("js-background_video");
-        var bufperc = backgroundVideo.bufferedPercent();
-        $('.js-loading').append('.');
+        $('.js-loading_message').append('.');
 
-        if (bufperc === 1) {
+        if (backgroundVideo.bufferedPercent() === 1) {
             clearInterval(buffer_interval);
         }
     }
@@ -114,10 +100,10 @@ $(function () {
 
     $('.js-play_video').click(function () {
         backgroundVideo.pause();
-        playVideo($(this).attr('data-video-filename'));
+        playModalVideo($(this).data('video'));
     });
 
-    $('.js-close_pop_up').click(function () {
+    $('.js-close_modal').click(function () {
         modalVideo.pause();
         $('.js-modal_layer').hide();
         $('.js-modal_container').hide();

@@ -3,23 +3,28 @@
 <head>
     <meta charset="utf-8"> 
     <title>Chris Groban - Film Director - Los Angeles, California</title>
-    <link href="./inc/videojs/video-js.css" rel="stylesheet">
-    <link rel="stylesheet" href="./css/nav.css" type="text/css" media="screen">
-    <link href="./css/style.css" rel="stylesheet">
-    <script type="text/javascript" src="./inc/jquery/jquery.min.js"></script>
-    <script type="text/javascript" src="./inc/videojs/video.js"></script>
-    <script async type="text/javascript" src="./js/nav.js"></script>
-    <script async type="text/javascript" src="./js/main.js"></script>
+    <link href="inc/videojs/video-js.css" rel="stylesheet"type="text/css"  media="all">
+    <link href="css/nav.css" rel="stylesheet" type="text/css" media="all">
+    <link href="css/style.css" rel="stylesheet"type="text/css" media="all">
+    <script type="text/javascript" src="inc/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="inc/videojs/video.js"></script>
+    <script async type="text/javascript" src="js/nav.js"></script>
+    <script async type="text/javascript" src="js/main.js"></script>
 </head>
 <body>
 
-<canvas id="back_canvas" width="100" height="100"></canvas>
-
-<div id="wrap">
+<div class="background_video_container">
     <video
-        id="js-background_video" class="background_video video-js vjs-default-skin"
-        width="640" height="480"
-        data-setup='{ "controls": false, "autoplay": true, "preload": "auto", "loop": true }'
+        height="480"
+        width="640"
+        class="background_video video-js vjs-default-skin"
+        data-setup='{
+            "autoplay": true,
+            "controls": false,
+            "loop": true,
+            "preload": "auto",
+        }'
+        id="js-background_video"
     >
         <source
             src="http://chrisgroban.com/client_review/mp4forsite/projector_ACTUAL_v3_noaudio_120830_H.mp4"
@@ -27,102 +32,135 @@
         >
     </video>
 
-    <div id="curtain" class="js-curtain">
-        <div id="loading" class="js-loading">Buffering video</div>
+    <div class="js-fade_in fade_in">
+        <div class="js-loading_message loading_message">Buffering video</div>
     </div>
 </div>
 
-<canvas id="canvas" width="100" height="100"></canvas>
+<div class="main_container">
+    <div class="js-logo logo"></div>
+    <img src="img/white-bar.png" class="js-whitebar whitebar">
+    <ul class="js-menu menu">
 
-<div id="main">
-    <div id="logo" class="js-logo"></div>
-    <img src="./img/white-bar.png" id="whitebar" class="js-whitebar">
-    <ul id="menu" class="js-menu menu">
+        <img src="img/nav/videos_u.png" class="js-mirror mirror1" data-nav="1">
+        <img src="img/nav/bio_u.png" class="js-mirror mirror2" data-nav="2">
+        <img src="img/nav/contact_u.png" class="js-mirror mirror3" data-nav="3">
 
-        <img src="./img/nav/videos_u2.png" id="mirror1" class="js-mirror_1">
-        <img src="./img/nav/bio_u2.png" id="mirror2" class="js-mirror_2">
-        <img src="./img/nav/contact_u2.png" id="mirror3" class="js-mirror_3">
+        <li class="js-nav_menu_container nav_menu_container" data-nav="1">
+            <a class="js-nav_link nav_link" data-nav="1">
+                <img src="img/nav/videos.png">
+            </a>
+            <div class="js-sc_menu_wrapper sc_menu_wrapper" data-nav="1">
+                <div class="js-sc_menu sc_menu video_nav_menu">
 
-        <li id="li1" class="js-nav_menu_container">
-            <a href="#" id="navlink1" class="js-navlink1 js-nav_link" data-nav-link="1"><img src="./img/nav/videos.png"></a>
-            <div class="sc_menu_wrapper">
-                <div class="sc_menu video_nav_menu js-nav_menu_1">
-
-                    <a class="js-play_video" data-video-filename="1076_AEPK_101202_1000-ForSite">
+                    <a
+                        class="js-play_video"
+                        data-video="http://chrisgroban.com/client_review/mp4forsite/1076_AEPK_101202_1000-ForSite.mp4"
+                    >
                         <div>
                             <p>Akon</p>
                             <p class="video_category">EPK</p>
-                            <img src="./img/video_thumbs/Akon.png">
+                            <img src="img/video_thumbs/Akon.png">
                         </div>
                     </a>
-                    <a class="js-play_video" data-video-filename="Angel%20Taylor%20EPK%202010">
+                    <a
+                        class="js-play_video"
+                        data-video="http://chrisgroban.com/client_review/mp4forsite/Angel%20Taylor%20EPK%202010.mp4"
+                    >
                         <div>
                             <p>Angel Taylor</p>
                             <p class="video_category">EPK</p>
-                            <img src="./img/video_thumbs/AngelTaylor.png">
+                            <img src="img/video_thumbs/AngelTaylor.png">
                         </div>
                     </a>
-                    <a class="js-play_video" data-video-filename="BROWN">
+                    <a
+                        class="js-play_video"
+                        data-video="http://chrisgroban.com/client_review/mp4forsite/BROWN.mp4"
+                    >
                         <div>
                             <p>Brown</p>
                             <p class="video_category">Short Film</p>
-                            <img src="./img/video_thumbs/Brown.png">
+                            <img src="img/video_thumbs/Brown.png">
                         </div>
                     </a>
-                    <a class="js-play_video" data-video-filename="Frally_CASUALTY_101212_1000_FIN-ForSite">
+                    <a
+                        class="js-play_video"
+                        data-video="http://chrisgroban.com/client_review/mp4forsite/Frally_CASUALTY_101212_1000_FIN-ForSite.mp4"
+                    >
                         <div>
                             <p>Frally "Casualty"</p>
                             <p class="video_category">Music Video</p>
-                            <img src="./img/video_thumbs/Frally.png">
+                            <img src="img/video_thumbs/Frally.png">
                         </div>
                     </a>
-                    <a class="js-play_video" data-video-filename="TRAPPED_110505_1200-ForSite">
+                    <a
+                        class="js-play_video"
+                        data-video="http://chrisgroban.com/client_review/mp4forsite/TRAPPED_110505_1200-ForSite.mp4"
+                    >
                         <div>
                             <p>Molly Bryant "Trapped"</p>
                             <p class="video_category">Music Video</p>
-                            <img src="./img/video_thumbs/Trapped.png">
+                            <img src="img/video_thumbs/Trapped.png">
                         </div>
                     </a>
-                    <a class="js-play_video" data-video-filename="COFFEE">
+                    <a
+                        class="js-play_video"
+                        data-video="http://chrisgroban.com/client_review/mp4forsite/COFFEE.mp4"
+                    >
                         <div>
                             <p>Coffee</p>
                             <p class="video_category">Short Film</p>
-                            <img src="./img/video_thumbs/Coffee.png">
+                            <img src="img/video_thumbs/Coffee.png">
                         </div>
                     </a>
-                    <a class="js-play_video" data-video-filename="Excerpt%20from%20Another%20Day">
+                    <a
+                        class="js-play_video"
+                        data-video="http://chrisgroban.com/client_review/mp4forsite/Excerpt%20from%20Another%20Day.mp4"
+                    >
                         <div>
                             <p>Another Day</p>
                             <p class="video_category">Excerpt from Film</p>
-                            <img src="./img/video_thumbs/AnotherDay.png">
+                            <img src="img/video_thumbs/AnotherDay.png">
                         </div>
                     </a>
-                    <a class="js-play_video" data-video-filename="WalkAway_111203_1200-ForSite">
+                    <a
+                        class="js-play_video"
+                        data-video="http://chrisgroban.com/client_review/mp4forsite/WalkAway_111203_1200-ForSite.mp4"
+                    >
                         <div>
                             <p>Josh Groban<br>"If I Walk Away"</p>
                             <p class="video_category">Music Video</p>
-                            <img src="./img/video_thumbs/WalkAway.png">
+                            <img src="img/video_thumbs/WalkAway.png">
                         </div>
                     </a>
-                    <a class="js-play_video" data-video-filename="Ludo_FOOD_110125_1400-QuickTime%20H.264">
+                    <a
+                        class="js-play_video"
+                        data-video="http://chrisgroban.com/client_review/mp4forsite/Ludo_FOOD_110125_1400-QuickTime%20H.264.mp4"
+                    >
                         <div>
                             <p>Ludobites:<br>The Food</p>
                             <p class="video_category">Short Doc</p>
-                            <img src="./img/video_thumbs/LudoFOOD.png">
+                            <img src="img/video_thumbs/LudoFOOD.png">
                         </div>
                     </a>
-                    <a class="js-play_video" data-video-filename="Ludo_WhatIsLudobites_110127_1500-QuickTime%20H.264">
+                    <a
+                        class="js-play_video"
+                        data-video="http://chrisgroban.com/client_review/mp4forsite/Ludo_WhatIsLudobites_110127_1500-QuickTime%20H.264.mp4"
+                    >
                         <div>
                             <p>What is Ludobites?</p>
                             <p class="video_category">Short Doc</p>
-                            <img src="./img/video_thumbs/LudoWHATIS.png">
+                            <img src="img/video_thumbs/LudoWHATIS.png">
                         </div>
                     </a>
-                    <a class="js-play_video" data-video-filename="REEL_Director_120119_1600_v2_720x405-ForSite">
+                    <a
+                        class="js-play_video"
+                        data-video="http://chrisgroban.com/client_review/mp4forsite/REEL_Director_120119_1600_v2_720x405-ForSite.mp4"
+                    >
                         <div>
                             <p>Chris Groban</p>
                             <p class="video_category">Reel</p>
-                            <img src="./img/video_thumbs/Reel.png">
+                            <img src="img/video_thumbs/Reel.png">
                         </div>
                     </a>
 
@@ -130,11 +168,13 @@
             </div>
         </li>
 
-        <li id="li2" class="js-nav_menu_container">
-            <a href="#" id="navlink2" class="js-navlink2"><img src="./img/nav/bio.png"></a>
-            <div class="sc_menu_wrapper2 bio_nav_menu_wrapper">
-                <div class="sc_menu bio_nav_menu js-nav_menu_2">
-                    <a>
+        <li class="js-nav_menu_container nav_menu_container bio_nav_menu_container" data-nav="2">
+            <a class="js-nav_link nav_link nav_link_2" data-nav="2">
+                <img src="img/nav/bio.png">
+            </a>
+            <div class="js-sc_menu_wrapper sc_menu_wrapper_short bio_nav_menu_wrapper" data-nav="2">
+                <div class="js-sc_menu sc_menu">
+                    <a class="bio_nav_menu_link">
                         <div>
                             <p>Chris Groban lives in Los Angeles, CA where he writes and directs music videos, commercials, and documentaries.</p>
                             <br>
@@ -145,11 +185,13 @@
             </div>
         </li>
 
-        <li id="li3" class="js-nav_menu_container">
-            <a href="#" id="navlink3" class="js-navlink3"><img src="./img/nav/contact.png"></a>
-            <div class="sc_menu_wrapper2 contact_nav_menu_wrapper">
-                <div class="sc_menu contact_nav_menu js-nav_menu_3">
-                    <a>
+        <li class="js-nav_menu_container nav_menu_container contact_nav_menu_container" data-nav="3">
+            <a class="js-nav_link nav_link nav_link_3" data-nav="3">
+                <img src="img/nav/contact.png">
+            </a>
+            <div class="js-sc_menu_wrapper sc_menu_wrapper_short contact_nav_menu_wrapper" data-nav="3">
+                <div class="js-sc_menu sc_menu">
+                    <a class="contact_nav_menu_link">
                         <div>
                             <p>Executive Producer:</p>
                             <p>Michael Appel</p>
@@ -161,15 +203,22 @@
         </li>
     </ul>
 
-    <div id="modal_layer" class="js-modal_layer">
-        <div id="modal_close_layer" class="js-close_pop_up"></div>
-        <div id="modal_container" class="js-modal_container">
-            <a id="close_pop_up" class="js-close_pop_up">X close</a>
+    <div class="js-modal_layer modal_layer">
+        <div class="js-close_modal modal_close_layer"></div>
+        <div class="js-modal_container modal_container">
+            <a class="js-close_modal close_modal">X close</a>
             <br>
             <video
-                id="js-modal_video" class="video-js vjs-default-skin"
-                controls width="640" height="480"
-                data-setup='{ "controls": true, "autoplay": false, "loop": false }'
+                controls
+                height="480"
+                width="640"
+                class="video-js vjs-default-skin"
+                data-setup='{
+                    "autoplay": false,
+                    "controls": true,
+                    "loop": false,
+                }'
+                id="js-modal_video"
             ></video>
         </div>
     </div>
