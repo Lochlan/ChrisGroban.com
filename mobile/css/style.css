@@ -59,6 +59,8 @@ span.ColabBol {
 div#wrap {
     background: #000;
     margin: 0 auto;
+    overflow: hidden;
+    position: relative;
     width: 320px;
 }
 div#header {
