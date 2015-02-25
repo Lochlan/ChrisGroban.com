@@ -77,7 +77,7 @@ $(function () {
     }
 
     //Start once bg video is loaded
-    backgroundVideo.ready(startBGMovie);
+    backgroundVideo.one('loadeddata', startBGMovie);
 
     // window sizing
     windowSizeHandler(); //Initial size
