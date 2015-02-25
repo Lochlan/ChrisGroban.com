@@ -3,15 +3,8 @@ $(function () {
 
     // "globals"
     var buffer_interval, //The interval used for checking whether or not to begin the bg video
-        backgroundVideo = _V_("js-background_video", {
-            "controls": false,
-            "autoplay": true,
-            "preload": "auto",
-            "loop": true,
-        }),
-        modalVideo = _V_("js-modal_video", {
-            "autoplay": true,
-        });
+        backgroundVideo = videojs("js-background_video"),
+        modalVideo = videojs("js-modal_video");
 
     function windowSizeHandler() {
         var windowAspectRatio = $(window).width() / $(window).height(),
@@ -45,13 +38,15 @@ $(function () {
             modalWidth = Math.floor((15.9 / 9) * modalHeight);
         }
 
-        backgroundVideo.size(backgroundWidth, backgroundHeight);
+        backgroundVideo.height(backgroundHeight);
+        backgroundVideo.width(backgroundWidth);
         $('#js-background_video').css({
             top: backgroundTop,
             left: backgroundLeft,
         });
 
-        modalVideo.size(modalWidth, modalHeight);
+        modalVideo.height(modalHeight);
+        modalVideo.width(modalWidth);
         $('.js-modal_container').css({
             top: Math.floor(($(window).height() - modalHeight) / 2),
             left: Math.floor(($(window).width() - modalWidth) / 2),
@@ -74,7 +69,7 @@ $(function () {
             src: file,
         }]);
 
-        _V_("js-background_video").pause();
+        videojs("js-background_video").pause();
         $('.js-modal_container').fadeIn(500);
         modalVideo.play();
     }
@@ -92,7 +87,7 @@ $(function () {
     }, 500);
 
     //Start once bg video is loaded
-    backgroundVideo.addEvent("loadeddata", startBGMovie);
+    backgroundVideo.ready(startBGMovie);
 
     // window sizing
     windowSizeHandler(); //Initial size

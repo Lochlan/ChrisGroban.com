@@ -3,11 +3,11 @@
 <head>
     <meta charset="utf-8">
     <title>Chris Groban - Film Director - Los Angeles, California</title>
-    <link href="inc/videojs/video-js.css" rel="stylesheet"type="text/css" media="all">
+    <link href="inc/video-js/video-js.min.css" rel="stylesheet" type="text/css" media="all">
     <link href="css/nav.css" rel="stylesheet" type="text/css" media="all">
     <link href="css/style.css" rel="stylesheet"type="text/css" media="all">
     <script type="text/javascript" src="inc/jquery/jquery.min.js"></script>
-    <script type="text/javascript" src="inc/videojs/video.js"></script>
+    <script type="text/javascript" src="inc/video-js/video.novtt.js"></script>
     <script type="text/javascript" src="js/nav.js"></script>
     <script type="text/javascript" src="js/main.js"></script>
 </head>
@@ -15,16 +15,11 @@
 
 <div class="background_video_container">
     <video
-        height="480"
-        width="640"
+        autoplay
         class="background_video video-js vjs-default-skin"
-        data-setup='{
-            "autoplay": true,
-            "controls": false,
-            "loop": true,
-            "preload": "auto",
-        }'
         id="js-background_video"
+        loop
+        preload
     >
         <source
             src="http://chrisgroban.com/client_review/mp4forsite/projector_ACTUAL_v3_noaudio_120830_H.mp4"
@@ -219,16 +214,11 @@
             <a class="js-close_modal close_modal">X close</a>
             <br>
             <video
+                class="video-js vjs-default-skin"
                 controls
                 height="480"
-                width="640"
-                class="video-js vjs-default-skin"
-                data-setup='{
-                    "autoplay": false,
-                    "controls": true,
-                    "loop": false,
-                }'
                 id="js-modal_video"
+                width="640"
             ></video>
         </div>
     </div>
