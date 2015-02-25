@@ -1,9 +1,7 @@
 $(function () {
     "use strict";
 
-    // "globals"
-    var buffer_interval, //The interval used for checking whether or not to begin the bg video
-        backgroundVideo = videojs("js-background_video"),
+    var backgroundVideo = videojs("js-background_video"),
         modalVideo = videojs("js-modal_video");
 
     function windowSizeHandler() {
@@ -77,16 +75,6 @@ $(function () {
         $('.js-modal_container').fadeIn(500);
         modalVideo.play();
     }
-
-    function bufferVideo() {
-        if (backgroundVideo.bufferedPercent() === 1) {
-            clearInterval(buffer_interval);
-        }
-    }
-
-    buffer_interval = setInterval(function () {
-        bufferVideo();
-    }, 500);
 
     //Start once bg video is loaded
     backgroundVideo.ready(startBGMovie);
