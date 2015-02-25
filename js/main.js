@@ -31,7 +31,7 @@ $(function () {
             //window is too wide (or has the correct aspect ratio)
             backgroundWidth = $(window).width();
             backgroundHeight = Math.floor($(window).width() / desiredAspectRatio);
-            backgroundTop = (($(window).height() - backgroundHeight) / 2) + 'px'
+            backgroundTop = (($(window).height() - backgroundHeight) / 2) + 'px';
             backgroundLeft = 0;
 
             modalHeight = Math.floor((8 / 10) * $(window).height());
