@@ -55,7 +55,6 @@ $(function () {
 
     //starts opening sequence of effects
     function startBGMovie() {
-        $(".js-loading_message").hide(); //Hide loading message
         $(".js-fade_in").delay(1000).fadeOut(3000); //Fade in video
         $(".js-logo, .js-menu, .js-whitebar").delay(4000).fadeIn(1000); //Fade in logo, menu ,and white bar
     }
@@ -75,8 +74,6 @@ $(function () {
     }
 
     function bufferVideo() {
-        $('.js-loading_message').append('.');
-
         if (backgroundVideo.bufferedPercent() === 1) {
             clearInterval(buffer_interval);
         }
