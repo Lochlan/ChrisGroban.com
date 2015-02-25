@@ -60,13 +60,18 @@ $(function () {
     }
 
     //start playing the pop up video
-    function playModalVideo(file) {
+    function playModalVideo(urlMP4, urlWebM) {
+        var sources = [];
+        if (urlMP4) {
+            sources.push({ src: urlMP4, type: "video/mp4" });
+        }
+        if (urlWebM) {
+            sources.push({ src: urlWebM, type: "video/webm" });
+        }
+
         $('.js-modal_layer').show();
 
-        modalVideo.src([{
-            type: "video/mp4",
-            src: file,
-        }]);
+        modalVideo.src(sources);
 
         videojs("js-background_video").pause();
         $('.js-modal_container').fadeIn(500);
@@ -92,7 +97,7 @@ $(function () {
 
     $('.js-play_video').click(function () {
         backgroundVideo.pause();
-        playModalVideo($(this).data('video'));
+        playModalVideo($(this).data('video-mp4'), $(this).data('video-webm'));
     });
 
     $('.js-close_modal').click(function () {
