@@ -60,11 +60,11 @@ $(function () {
     //start playing the pop up video
     function playModalVideo(urlMP4, urlWebM) {
         var sources = [];
-        if (urlMP4) {
-            sources.push({ src: urlMP4, type: "video/mp4" });
-        }
         if (urlWebM) {
             sources.push({ src: urlWebM, type: "video/webm" });
+        }
+        if (urlMP4) {
+            sources.push({ src: urlMP4, type: "video/mp4" });
         }
 
         $('.js-modal_layer').show();
